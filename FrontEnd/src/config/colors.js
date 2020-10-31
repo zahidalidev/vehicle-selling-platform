@@ -1,7 +1,7 @@
 export default {
-    primary: "rgb(150, 18, 18)",
+    primary: "rgb(23, 137, 113)",
     primaryLight: "rgba(150, 18, 18, 0.5)",
-    secondary: "#292728",
+    secondary: "rgb(255, 215, 0)",
     darkGray: "#303656",
     lightGray: "#dadada",
     tomato: "#842335",

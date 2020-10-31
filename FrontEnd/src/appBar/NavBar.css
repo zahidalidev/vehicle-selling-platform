@@ -2,11 +2,11 @@
     flex-grow: 1;
 }
 .appBar {
-    background-color: rgba(40, 40, 40, 0) !important;
-    height: 70px !important ;
+    background-color: white !important;
+    height: 80px !important ;
     flex-direction: row !important;
-    justify-content: center !important;
-    margin-top: 40px;
+    justify-content: flex-end !important;
+    /* margin-top: 40px; */
 }
 
 .toolbar {
@@ -19,12 +19,16 @@
 }
 
 .windowMenue {
+    color: rgb(23, 137, 113) !important;
+    font-size: x-large !important;
+    font-weight: 600 !important;
     padding: 14px !important;
+    /* padding-bottom: 5px !important; */
     margin-left: 20px !important;
     width: fit-content;
     cursor: pointer;
-    margin-top: 20px !important;
-
+    /* margin-top: 20px !important; */
+    /* border-bottom: 3px solid #178971; */
 }
 .windowMenue:after {
   content: "";

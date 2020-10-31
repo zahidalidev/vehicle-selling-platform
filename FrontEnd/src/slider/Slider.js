@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Divider } from '@material-ui/core';
+import Particles from 'react-particles-js'
 
 import img1 from "../assets/nccvjom7pgi5jolixcza.jpg"
 import img2 from "../assets/slider2.jpg"
@@ -80,19 +81,21 @@ export default class Slider extends React.Component {
                         >
                             <div className="sliderLayer" >
                                 <Divider style={{ paddingTop: 40, backgroundColor: "black", borderBottom: `1px solid ${colors.primaryLight}` }} />
-
                                 <div class="container" style={{ marginTop: window.innerWidth > 767 ? '310px' : '140px' }}>
                                     <div class="row justify-content-center">
-                                        <div class="col">
+                                        {/* <div class="col-md-3">
+                                        </div> */}
+                                        <div class="col-md-6">
+                                            <Particles />
                                         </div>
-                                        <div class="col align-self-center">
+                                        <div class="col-md-6 align-self-center">
                                             <h1 className="sliderMainHeading" >Find Used Cars in Pakistans</h1>
                                             <h5 className="sliderSubHeading" >With thousands of cars, we have just the right one for you</h5>
-                                        </div>
-                                        <div class="col">
+                                            <Particles />
                                         </div>
                                     </div>
                                 </div>
+                                <Particles />
                             </div>
 
                         </CardMedia>

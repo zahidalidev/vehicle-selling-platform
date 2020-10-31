@@ -14,7 +14,7 @@
     color: white; 
     white-space: nowrap; 
     position: relative;
-    animation: mymove 5s infinite;
+    animation: mymove 5s;
     animation-delay: 0;
     animation-fill-mode: both;
 }
@@ -36,18 +36,18 @@
     color: white; 
     white-space: nowrap; 
     position: relative;
-    animation: mymove2 5s infinite;
+    animation: mymove2 5s;
     animation-delay: 0;
     animation-fill-mode: both;
 }
 @keyframes mymove2 {
   0% {
-    left: -400px;
-    top: 0px;
+    left: 0px;
+    top: -400px;
   }
   25% {
-    left: 200px;
-    top: 0px;
+    left: 0px;
+    top: 200px;
   }
   100% {
     left: 0px;

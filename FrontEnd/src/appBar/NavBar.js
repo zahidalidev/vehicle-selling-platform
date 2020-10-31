@@ -77,6 +77,7 @@ function NavBar(props) {
       <Button className="draweMenu" >Home</Button>
       <Button className="draweMenu" >Home</Button>
       <Button className="draweMenu" >Home</Button>
+      <Button className="draweMenu" >Home</Button>
     </div>
   );
 
@@ -104,6 +105,9 @@ function NavBar(props) {
               flexDirection: 'row',
               padding: 0,
             }}>
+              <Typography className="windowMenue" variant="h6" color="inherit">
+                Home
+              </Typography>
               <Typography className="windowMenue" variant="h6" color="inherit">
                 Home
               </Typography>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import NavBar from './appBar/NavBar';
 import Home from './pages/Home';
-import "./App.css"
+import Slider from "./slider/Slider";
 
 class App extends Component {
   render() {
@@ -13,9 +13,9 @@ class App extends Component {
             <NavBar onWindow={window} />
           </div>
         </div>
-        <div className="col-md-12 slider">
 
-        </div>
+        <Slider />
+
         <div className="container">
           <div style={{ marginTop: 100 }} className="col-md-12">
             <Home />

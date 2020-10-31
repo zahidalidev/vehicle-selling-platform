@@ -1,0 +1,55 @@
+.root {
+    flex-grow: 1;
+}
+.appBar {
+    background-color: rgba(40, 40, 40, 0) !important;
+    height: 70px !important ;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+}
+
+.toolbar {
+    align-items: flex-start;
+    min-height: 128px;
+}
+
+.menue {
+    justify-items: right
+}
+
+.windowMenue {
+    padding: 8px !important;
+    margin-left: 20px !important;
+    width: fit-content;
+    cursor: pointer;
+
+}
+.windowMenue:after {
+  content: "";
+  background: #90c8ee;
+  display: block;
+  position: absolute;
+  padding-top: 25%;
+  padding-left: 30%;
+  margin-left: -20px !important;
+  margin-top: -20%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.windowMenue:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+@media (max-width: 767px){
+    .draweMenu {
+        width: 100% !important;
+        margin-left: -0px !important;
+        color: black !important;
+    }
+    .appBar {
+        justify-content: flex-start !important;
+    }
+}

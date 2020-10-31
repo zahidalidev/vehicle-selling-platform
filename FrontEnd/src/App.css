@@ -1,0 +1,11 @@
+.slider{
+    height: 510px;
+    width: 100%;
+    background-image: linear-gradient(180deg, black, rgb(27, 53, 114));;
+}
+
+@media (max-width: 767px){
+    .slider{
+        height: 250px !important;
+    }
+}

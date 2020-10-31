@@ -1,0 +1,68 @@
+
+.sliderCard {
+    height: 750px !important;
+}
+
+.sliderLayer {
+    background-image: linear-gradient(180deg, black, rgba(27, 53, 114, 0));
+    width: 100%;
+    height: 650px;
+    opacity: 0.9;
+}
+
+.sliderMainHeading {
+    color: white; 
+    white-space: nowrap; 
+    position: relative;
+    animation: mymove 5s infinite;
+    animation-delay: 0;
+    animation-fill-mode: both;
+}
+@keyframes mymove {
+  0% {
+    left: -400px;
+    top: 0px;
+  }
+  25% {
+    left: 200px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+.sliderSubHeading {
+    color: white; 
+    white-space: nowrap; 
+    position: relative;
+    animation: mymove2 5s infinite;
+    animation-delay: 0;
+    animation-fill-mode: both;
+}
+@keyframes mymove2 {
+  0% {
+    left: -400px;
+    top: 0px;
+  }
+  25% {
+    left: 200px;
+    top: 0px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@media (max-width: 767px){
+    .sliderCard {
+        height: 300px !important;
+    }
+
+    .sliderLayer {
+        height: 300px !important;
+    }
+}
+
+

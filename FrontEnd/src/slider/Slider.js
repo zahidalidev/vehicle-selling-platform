@@ -4,9 +4,12 @@ import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Divider } from '@material-ui/core';
 
 import img1 from "../assets/nccvjom7pgi5jolixcza.jpg"
 import img2 from "../assets/slider2.jpg"
+import colors from '../config/colors';
+import "./Slider.css"
 
 export default class Slider extends React.Component {
     constructor() {
@@ -58,7 +61,7 @@ export default class Slider extends React.Component {
                     ssr={true} // means to render carousel on server-side.
                     infinite={true}
                     autoPlay={true}
-                    autoPlaySpeed={3000}
+                    autoPlaySpeed={5000}
                     keyBoardControl={true}
                     customTransition="transform 600ms ease-in-out"
                     transitionDuration={500}
@@ -71,16 +74,26 @@ export default class Slider extends React.Component {
                 >
                     {this.state.images.map(sliderImage =>
                         <CardMedia
-                            style={{ height: window.innerWidth > 767 ? '650px' : '300px' }}
+                            className="sliderCard"
                             image={sliderImage}
                             title="Wheels"
                         >
-                            <div style={{
-                                backgroundImage: "linear-gradient(180deg, black, rgba(27, 53, 114, 0))",
-                                width: "100%",
-                                height: window.innerWidth > 767 ? '650px' : '300px',
-                                opacity: 0.9
-                            }} ></div>
+                            <div className="sliderLayer" >
+                                <Divider style={{ paddingTop: 40, backgroundColor: "black", borderBottom: `1px solid ${colors.primaryLight}` }} />
+
+                                <div class="container" style={{ marginTop: window.innerWidth > 767 ? '310px' : '140px' }}>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                        </div>
+                                        <div class="col align-self-center">
+                                            <h1 className="sliderMainHeading" >Find Used Cars in Pakistans</h1>
+                                            <h5 className="sliderSubHeading" >With thousands of cars, we have just the right one for you</h5>
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </CardMedia>
                     )}

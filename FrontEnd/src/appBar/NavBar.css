@@ -6,6 +6,7 @@
     height: 70px !important ;
     flex-direction: row !important;
     justify-content: center !important;
+    margin-top: 40px;
 }
 
 .toolbar {

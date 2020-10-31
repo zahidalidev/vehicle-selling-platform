@@ -13,7 +13,7 @@ import LocalShippingIcon from '@material-ui/icons/LocalShipping';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
-import { Typography } from '@material-ui/core';
+import { Divider, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import List from "@material-ui/core/List"
 
@@ -82,11 +82,14 @@ function NavBar(props) {
   );
 
   const container = onWindow !== undefined ? onWindow.document.body : undefined;
-  console.log("c: ", container)
+
   return (
     <div className="root">
       {/* App Bar to render drawer conditionally */}
+      {/* <hr style={{ height: "1px", backgroundColor: "red" }} /> */}
+
       <AppBar position="fixed" className="appBar" elevation={0}>
+
         <Toolbar className="toolbar">
           <IconButton
             color="inherit"
@@ -99,6 +102,7 @@ function NavBar(props) {
           {/* <Toolbar>
                 <img src={logo} className={classes.logo} />
                 </Toolbar> */}
+
           <div hidden={windowWidth < 767} >
             <List style={{
               display: 'flex',

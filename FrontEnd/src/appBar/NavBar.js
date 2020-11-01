@@ -55,6 +55,15 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+const menues = [
+  { title: "Home", name: "home" },
+  { title: "Login", name: "login" },
+  { title: "Register", name: "register" },
+  { title: "Home", name: "home" },
+  { title: "Home", name: "home" },
+  { title: "Home", name: "home" },
+]
+
 function NavBar(props) {
   const { onWindow } = props;
   const windowWidth = onWindow.innerWidth;
@@ -73,11 +82,9 @@ function NavBar(props) {
 
   const drawer = (
     <div style={{ width: "100%", marginTop: 20 }}>
-      <Button className="draweMenu" >Home</Button>
-      <Button className="draweMenu" >Home</Button>
-      <Button className="draweMenu" >Home</Button>
-      <Button className="draweMenu" >Home</Button>
-      <Button className="draweMenu" >Home</Button>
+      {menues.map((men, i) => (
+        <Button key={i} className="draweMenu" name={men.name} >{men.title}</Button>
+      ))}
     </div>
   );
 
@@ -109,21 +116,11 @@ function NavBar(props) {
               flexDirection: 'row',
               padding: 0,
             }}>
-              <Typography className="windowMenue" variant="h6" color="inherit">
-                Home
-              </Typography>
-              <Typography className="windowMenue" variant="h6" color="inherit">
-                Home
-              </Typography>
-              <Typography className="windowMenue" variant="h6" color="inherit">
-                Home
-              </Typography>
-              <Typography className="windowMenue" variant="h6" color="inherit">
-                Home
-              </Typography>
-              <Typography className="windowMenue" variant="h6" color="inherit">
-                Home
-              </Typography>
+              {menues.map((men, i) => (
+                <Typography name={men.name} key={i} className="windowMenue" variant="h6" color="inherit">
+                  {men.title}
+                </Typography>
+              ))}
             </List>
           </div>
         </Toolbar>

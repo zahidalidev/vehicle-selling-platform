@@ -1,0 +1,8 @@
+.card {
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.card:hover {
+    box-shadow: grey;
+}

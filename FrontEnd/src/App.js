@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="col-md-12" style={{ marginBottom: 80 }} >
+          <div className="col-md-12" style={{ marginBottom: 70 }} >
             <NavBar onWindow={window} />
           </div>
         </div>

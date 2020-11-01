@@ -1,0 +1,47 @@
+.RegisterContainer {
+    display: flex !important;
+    /* flex: 1; */
+    /* flex-direction: row; */
+    width: 40%;
+    height: 600px;
+    justify-content: center !important;
+    align-content: center !important;
+    box-shadow: 2px 2px 5px 5px #a4a5a8 !important;
+    margin-top: 120px !important;
+}
+
+.RegisterTextFeild {
+    width: 80% !important;  
+    margin-bottom: 30px !important;
+    margin-left: 50px !important;
+}
+
+.RegisterButton {
+    width: 250px !important; 
+    height: 40px !important; 
+    margin-bottom: 15px !important; 
+
+    margin-left: 120px !important
+}
+
+
+.RegisterHeading {
+    margin-top: 80px !important; 
+    font-weight: bold !important; 
+}
+
+@media (max-width: 767px) {
+    .RegisterContainer {
+        width: 100%;
+        height: 600px;
+    }
+    .RegisterButton {
+        width: 200px !important; 
+        margin-left: 30px !important
+    }
+    
+    .RegisterTextFeild {
+        width: 100% !important;  
+        margin-left: 0px !important;
+    }
+}

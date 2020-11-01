@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 
 import NavBar from './appBar/NavBar';
-import Footer from "./components/Footer";
-import Home from './pages/Home';
-import Login from "./pages/Login/Login";
 import Slider from "./slider/Slider";
+import Home from './pages/Home';
+import Footer from "./components/Footer";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register"
+import AdDetails from "./pages/AdDetails/AdDetails";
 
 class App extends Component {
   render() {
@@ -27,9 +29,18 @@ class App extends Component {
         </div> */}
 
         {/* Login Page */}
-
-        <div style={{ marginTop: 80 }} className="col-md-12">
+        {/* <div style={{ marginTop: 80 }} className="col-md-12">
           <Login />
+        </div> */}
+
+        {/* Register Page */}
+        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+          <Register />
+        </div> */}
+
+        {/* Ad Details Page */}
+        <div style={{ marginTop: 80 }} className="col-md-12">
+          <AdDetails />
         </div>
 
         {/* Main Footer */}

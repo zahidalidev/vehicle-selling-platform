@@ -7,19 +7,24 @@ import colors from "../../config/colors";
 
 class Login extends Component {
     state = {
-        loginDetails: {
-            email: "",
-            password: ""
-        }
+        loginFeilds: [
+            {
+                label: "Email",
+                name: "email"
+            },
+            {
+                label: "Password",
+                name: "password"
+            },
+        ]
     }
 
     handleChange = (e, name) => {
-        const loginDetails = this.state.loginDetails;
-        loginDetails[name] = e.target.value;
-        this.setState({ loginDetails })
+
     }
 
     render() {
+        const { loginFeilds } = this.state;
 
         return (
             <>
@@ -27,25 +32,18 @@ class Login extends Component {
                     <div className="row" style={{ justifyContent: "center", marginTop: 40 }}>
                         <h1 className="loginHeading" style={{ color: colors.primary }} >Login</h1>
                         <div className="col-md-12" >
-                            <div className="col-md-12">
-                                <TextField
-                                    className="loginTextFeild"
-                                    label="Email"
-                                    variant="outlined"
-                                    size="medium"
-                                    onChange={(e) => this.handleChange(e, "email")}
-                                />
-                            </div>
 
-                            <div className="col-md-12">
-                                <TextField
-                                    className="loginTextFeild"
-                                    label="password"
-                                    variant="outlined"
-                                    size="medium"
-                                    onChange={(e) => this.handleChange(e, "password")}
-                                />
-                            </div>
+                            {loginFeilds.map((login, i) => (
+                                <div className="col-md-12" key={i} >
+                                    <TextField
+                                        className="loginTextFeild"
+                                        label={login.label}
+                                        variant="outlined"
+                                        size="medium"
+                                        onChange={(e) => this.handleChange(e, login.name)}
+                                    />
+                                </div>
+                            ))}
 
                             <div className="col-md-12" style={{ justifyItems: "center" }} >
                                 <Button className="loginButton" onClick={this.handleLogin} style={{ backgroundColor: colors.primary }} variant="contained" color="primary">

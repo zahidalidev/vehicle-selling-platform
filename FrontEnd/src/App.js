@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import NavBar from './appBar/NavBar';
+import Footer from "./components/Footer";
 import Home from './pages/Home';
 import Slider from "./slider/Slider";
 
@@ -8,19 +9,27 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
+        {/* AppBar and Drawer */}
         <div className="container">
           <div className="col-md-12" style={{ marginBottom: 70 }} >
             <NavBar onWindow={window} />
           </div>
         </div>
 
+        {/* Main Slider */}
         <Slider />
 
-        <div className="container">
-          <div style={{ marginTop: 100 }} className="col-md-12">
-            <Home />
-          </div>
+        {/* Main Page */}
+        <div style={{ marginTop: 80 }} className="col-md-12">
+          <Home />
         </div>
+
+        {/* Main Footer */}
+        <div>
+          <Footer />
+        </div>
+
       </div>
     );
   }

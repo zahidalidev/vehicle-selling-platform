@@ -21,7 +21,7 @@ const responsive = {
     },
     tablet: {
         breakpoint: { max: 1024, min: 464 },
-        items: 2,
+        items: 1,
         slidesToSlide: 2 // optional, default to 1.
     },
     mobile: {
@@ -31,34 +31,108 @@ const responsive = {
     }
 };
 
+const products = [
+    {
+        image: img1,
+        title: "This is vehicle",
+        modelName: "Honda Civic 2019",
+        price: "PKR 1,23,000",
+        city: "Lahore"
+    },
+    {
+        image: img1,
+        title: "This is vehicle",
+        modelName: "Corola 2019",
+        price: "PKR 2,23,134",
+        city: "Lahore"
+    },
+    {
+        image: img1,
+        title: "This is vehicle",
+        modelName: "Prius 2019",
+        price: "PKR 3,23,000",
+        city: "Gujranwala"
+    },
+    {
+        image: img1,
+        title: "This is vehicle",
+        modelName: "Honda Civic 2019",
+        price: "PKR 6,23,000",
+        city: "Islamabad"
+    },
+    {
+        image: img1,
+        title: "This is vehicle",
+        modelName: "Corolla",
+        price: "PKR 2,10,000",
+        city: "Multan"
+    },
+    {
+        image: img1,
+        title: "This is vehicle",
+        modelName: "Honda Civic 2018",
+        price: "PKR 1,23,000",
+        city: "Sialkot"
+    },
+]
+
 class Home extends Component {
     render() {
         return (
-            <Carousel
-                swipeable={true}
-                draggable={false}
-                showDots={true}
-                responsive={responsive}
-                ssr={true} // means to render carousel on server-side.
-                infinite={true}
-                autoPlay={this.props.deviceType !== "mobile" ? true : false}
-                autoPlaySpeed={3000}
-                keyBoardControl={true}
-                customTransition="all .5"
-                transitionDuration={500}
-                containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
-                deviceType={this.props.deviceType}
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item-padding-40-px"
-            >
-                <ProductCard image={img1} title={"this is car"} mainHeading={"Honda"} subHeading={"subHeading"} subsubHeading={"subsubheading"} />
-                <ProductCard image={img1} title={"this is car"} mainHeading={"Honda"} subHeading={"subHeading"} subsubHeading={"subsubheading"} />
-                <ProductCard image={img1} title={"this is car"} mainHeading={"Honda"} subHeading={"subHeading"} subsubHeading={"subsubheading"} />
-                <ProductCard image={img1} title={"this is car"} mainHeading={"Honda"} subHeading={"subHeading"} subsubHeading={"subsubheading"} />
-                <ProductCard image={img1} title={"this is car"} mainHeading={"Honda"} subHeading={"subHeading"} subsubHeading={"subsubheading"} />
-                <ProductCard image={img1} title={"this is car"} mainHeading={"Honda"} subHeading={"subHeading"} subsubHeading={"subsubheading"} />
-            </Carousel>
+            <div style={{ marginLeft: -14, marginRight: -14, marginBottom: 100 }}>
+                <div style={{ marginLeft: 90, marginRight: 50, marginBottom: 100 }} >
+                    <Carousel
+                        swipeable={true}
+                        draggable={false}
+                        showDots={true}
+                        responsive={responsive}
+                        ssr={true} // means to render carousel on server-side.
+                        infinite={true}
+                        autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                        autoPlaySpeed={3000}
+                        keyBoardControl={true}
+                        customTransition="all .5"
+                        transitionDuration={500}
+                        containerClass="carousel-container"
+                        removeArrowOnDeviceType={["tablet", "mobile"]}
+                        deviceType={this.props.deviceType}
+                        dotListClass="custom-dot-list-style"
+                        itemClass="carousel-item-padding-40-px"
+
+                    >
+                        {products.map((vehicle, i) => (
+                            <ProductCard key={i} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
+                        ))}
+                    </Carousel>
+                </div>
+                <div style={{ backgroundColor: "#f2f3f3", width: "100%", padding: 10 }} >
+                    <div style={{ marginLeft: 90, marginRight: 50, marginTop: 50, marginBottom: 50 }} >
+                        <Carousel
+                            swipeable={true}
+                            draggable={false}
+                            showDots={true}
+                            responsive={responsive}
+                            ssr={true} // means to render carousel on server-side.
+                            infinite={true}
+                            autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                            autoPlaySpeed={3000}
+                            keyBoardControl={true}
+                            customTransition="all .5"
+                            transitionDuration={500}
+                            containerClass="carousel-container"
+                            removeArrowOnDeviceType={["tablet", "mobile"]}
+                            deviceType={this.props.deviceType}
+                            dotListClass="custom-dot-list-style"
+                            itemClass="carousel-item-padding-40-px"
+
+                        >
+                            {products.map((vehicle, i) => (
+                                <ProductCard key={i} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
+                            ))}
+                        </Carousel>
+                    </div>
+                </div>
+            </div>
         );
     }
 }

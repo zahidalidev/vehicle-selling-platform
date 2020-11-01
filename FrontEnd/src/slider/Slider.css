@@ -56,9 +56,47 @@
 @media (max-width: 767px){
     .sliderCard {
         height: 300px !important;
-        width: 400% !important;
+        /* width: 400% !important; */
     }
 
+    .sliderMainHeading {
+      font-size: 1.4em !important;
+    }
+
+    .sliderSubHeading {
+      font-size: 0.8em;
+    }
+
+    @keyframes mymove {
+      0% {
+        left: -309px;
+        top: 0px;
+      }
+      25% {
+        left: -109px;
+        top: 0px;
+
+      }
+      100% {
+        left: -9px;
+        top: 0px;
+      }
+    }
+
+    @keyframes mymove2 {
+      0% {
+        left: 0px;
+        top: 230px;
+      }
+      25% {
+        left: 0px;
+        top: 99px;
+      }
+      100% {
+        left: 0px;
+        top: 0px;
+      }
+    }
 }
 
 

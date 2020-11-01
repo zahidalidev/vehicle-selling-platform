@@ -18,7 +18,7 @@ const ProductCard = ({ image, title, mainHeading, subHeading, subsubHeading }) =
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    alt="Contemplative Reptile"
+                    alt="Vehicle"
                     height="200"
                     image={image}
                     title={title}

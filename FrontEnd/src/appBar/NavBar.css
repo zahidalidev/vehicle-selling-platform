@@ -32,7 +32,7 @@
 }
 .windowMenue:after {
   content: "";
-  background: #90c8ee;
+  background: #d6eea0;
   display: block;
   position: absolute;
   padding-top: 17%;

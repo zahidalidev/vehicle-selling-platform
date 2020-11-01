@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import NavBar from './appBar/NavBar';
 import Footer from "./components/Footer";
 import Home from './pages/Home';
+import Login from "./pages/Login/Login";
 import Slider from "./slider/Slider";
 
 class App extends Component {
@@ -18,11 +19,17 @@ class App extends Component {
         </div>
 
         {/* Main Slider */}
-        <Slider />
+        {/* <Slider /> */}
 
         {/* Main Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
+        {/* <div style={{ marginTop: 80 }} className="col-md-12">
           <Home />
+        </div> */}
+
+        {/* Login Page */}
+
+        <div style={{ marginTop: 80 }} className="col-md-12">
+          <Login />
         </div>
 
         {/* Main Footer */}

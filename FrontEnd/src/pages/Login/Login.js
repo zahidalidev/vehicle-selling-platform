@@ -25,7 +25,7 @@ class Login extends Component {
             <>
                 <div className="container loginContainer">
                     <div className="row" style={{ justifyContent: "center", marginTop: 40 }}>
-                        <h1 style={{ marginTop: 80, fontWeight: "bold", color: colors.primary }} >Login</h1>
+                        <h1 className="loginHeading" style={{ color: colors.primary }} >Login</h1>
                         <div className="col-md-12" >
                             <div className="col-md-12">
                                 <TextField

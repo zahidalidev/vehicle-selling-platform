@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route, Redirect } from "react-router-dom"
 
 import NavBar from './appBar/NavBar';
 import Slider from "./slider/Slider";
@@ -9,6 +10,8 @@ import Register from "./pages/Register/Register"
 import AdDetails from "./pages/AdDetails/AdDetails";
 import CreateAd from "./pages/CreateAd/CreateAd";
 import Search from "./pages/Search";
+import SearchResult from "./pages/SearchResult";
+
 
 class App extends Component {
   render() {
@@ -23,36 +26,41 @@ class App extends Component {
         </div>
 
         {/* Main Slider */}
-        {/* <Slider /> */}
+        <Slider />
 
         {/* Main Page */}
-        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+        <div style={{ marginTop: 80 }} className="col-md-12">
           <Home />
-        </div> */}
+        </div>
 
         {/* Login Page */}
-        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+        <div style={{ marginTop: 80 }} className="col-md-12">
           <Login />
-        </div> */}
+        </div>
 
         {/* Register Page */}
-        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+        <div style={{ marginTop: 80 }} className="col-md-12">
           <Register />
-        </div> */}
+        </div>
 
         {/* Ad Details Page */}
-        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+        <div style={{ marginTop: 80 }} className="col-md-12">
           <AdDetails />
-        </div> */}
+        </div>
 
         {/* Create Ad Page */}
-        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+        <div style={{ marginTop: 80 }} className="col-md-12">
           <CreateAd />
-        </div> */}
+        </div>
 
         {/* Search Page */}
         <div style={{ marginTop: 80 }} className="col-md-12">
           <Search />
+        </div>
+
+        {/* Search Result Page */}
+        <div style={{ marginTop: 80 }} className="col-md-12">
+          <SearchResult />
         </div>
 
         {/* Main Footer */}

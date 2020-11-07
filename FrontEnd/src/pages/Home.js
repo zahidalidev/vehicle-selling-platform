@@ -33,6 +33,7 @@ const responsive = {
 
 const products = [
     {
+        id: 1,
         image: img1,
         title: "This is vehicle",
         modelName: "Honda Civic 2019",
@@ -40,6 +41,7 @@ const products = [
         city: "Lahore"
     },
     {
+        id: 2,
         image: img1,
         title: "This is vehicle",
         modelName: "Corola 2019",
@@ -47,6 +49,7 @@ const products = [
         city: "Lahore"
     },
     {
+        id: 3,
         image: img1,
         title: "This is vehicle",
         modelName: "Prius 2019",
@@ -54,6 +57,7 @@ const products = [
         city: "Gujranwala"
     },
     {
+        id: 4,
         image: img1,
         title: "This is vehicle",
         modelName: "Honda Civic 2019",
@@ -61,6 +65,7 @@ const products = [
         city: "Islamabad"
     },
     {
+        id: 5,
         image: img1,
         title: "This is vehicle",
         modelName: "Corolla",
@@ -68,6 +73,7 @@ const products = [
         city: "Multan"
     },
     {
+        id: 6,
         image: img1,
         title: "This is vehicle",
         modelName: "Honda Civic 2018",
@@ -75,7 +81,6 @@ const products = [
         city: "Sialkot"
     },
 ]
-
 class Home extends Component {
     render() {
         return (
@@ -101,7 +106,7 @@ class Home extends Component {
 
                     >
                         {products.map((vehicle, i) => (
-                            <ProductCard key={i} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
+                            <ProductCard key={i} id={vehicle.id} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
                         ))}
                     </Carousel>
                 </div>
@@ -127,7 +132,7 @@ class Home extends Component {
 
                         >
                             {products.map((vehicle, i) => (
-                                <ProductCard key={i} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
+                                <ProductCard key={i} id={vehicle.id} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
                             ))}
                         </Carousel>
                     </div>

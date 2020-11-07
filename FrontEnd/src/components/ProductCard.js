@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import colors from "../config/colors"
 import "./ProductCard.css"
 
-const ProductCard = ({ image, title, mainHeading, subHeading, subsubHeading }) => {
+const ProductCard = ({ image, title, mainHeading, subHeading, subsubHeading, id }) => {
     return (
         <Card className="card">
             <CardActionArea>

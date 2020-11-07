@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import _ from "lodash";
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import LocalShippingIcon from '@material-ui/icons/LocalShipping';
-import DriveEtaIcon from '@material-ui/icons/DriveEta';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import { Divider, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import List from "@material-ui/core/List"
+import { useHistory } from "react-router"
 
 import "./NavBar.css"
 import colors from '../config/colors';
@@ -56,25 +49,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const menues = [
-  { title: "Home", name: "home" },
-  { title: "Login", name: "login" },
-  { title: "Register", name: "register" },
-  { title: "Home", name: "home" },
-  { title: "Home", name: "home" },
-  { title: "Home", name: "home" },
+  { title: "Home", path: "/" },
+  { title: "Login", path: "/login" },
+  { title: "Register", path: "/register" },
+  { title: "Post Ad", path: "/createad" },
+  { title: "Search", path: "/search" },
 ]
 
 function NavBar(props) {
   const { onWindow } = props;
   const windowWidth = onWindow.innerWidth;
   const classes = useStyles();
-  const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const history = useHistory()
 
   // like componentDidMount() in class
   useEffect(() => {
 
   })
+
+  const handleNavigation = (path) => {
+    history.push(path)
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -83,7 +79,7 @@ function NavBar(props) {
   const drawer = (
     <div style={{ width: "100%", marginTop: 20 }}>
       {menues.map((men, i) => (
-        <Button key={i} className="draweMenu" name={men.name} >{men.title}</Button>
+        <Button onClick={() => handleNavigation(men.path)} key={i} className="draweMenu" >{men.title}</Button>
       ))}
     </div>
   );
@@ -117,7 +113,7 @@ function NavBar(props) {
               padding: 0,
             }}>
               {menues.map((men, i) => (
-                <Typography name={men.name} key={i} className="windowMenue" variant="h6" color="inherit">
+                <Typography onClick={() => handleNavigation(men.path)} key={i} className="windowMenue" variant="h6" color="inherit">
                   {men.title}
                 </Typography>
               ))}

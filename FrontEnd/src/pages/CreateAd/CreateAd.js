@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-import {
-    fade,
-    ThemeProvider,
-    withStyles,
-    makeStyles,
-    createMuiTheme,
-} from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
+import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import { Button, Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
-import colors from '../../config/colors';
 
 const CssTextField = withStyles({
     root: {

@@ -1,4 +1,4 @@
-export default {
+const colors = {
     primary: "rgb(23, 137, 113)",
     primaryLight: "rgba(150, 18, 18, 0.5)",
     secondary: "rgb(255, 215, 0)",
@@ -13,3 +13,5 @@ export default {
     white: "#fff",
     darkBlue: "#1c2989",
 }
+
+export default colors;

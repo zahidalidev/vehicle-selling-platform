@@ -15,15 +15,15 @@ class Slider extends Component {
                 image={img3}
                 title="Wheels"
             >
-                <div class="container" >
-                    <div class="row justify-content-left">
-                        <div class="col-md-6 align-self-center">
+                <div className="container" >
+                    <div className="row justify-content-left">
+                        <div className="col-md-6 align-self-center">
                             <Particles />
                             <h1 className="sliderMainHeading" >Find Used Cars in Pakistan</h1>
                             <h5 className="sliderSubHeading" >With thousands of cars, we have just the right one for you</h5>
                             <Particles />
                         </div>
-                        <div class="col-md-6">
+                        <div className="col-md-6">
                             <Particles />
                         </div>
                     </div>

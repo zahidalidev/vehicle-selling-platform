@@ -26,42 +26,32 @@ class App extends Component {
         </div>
 
         {/* Main Slider */}
-        <Slider />
+        <Route path="/" exact render={(props) => <Slider {...props} />} />
 
-        {/* Main Page */}
         <div style={{ marginTop: 80 }} className="col-md-12">
-          <Home />
+          {/* Main Page */}
+          <Route path="/" exact render={(props) => <Home {...props} />} />
+
+          {/* Login Page */}
+          <Route path="/login" exact render={(props) => <Login {...props} />} />
+
+          {/* Register Page */}
+          <Route path="/register" exact render={(props) => <Register {...props} />} />
+
+          {/* Ad Details Page */}
+          <Route path="/addetails/:vehicleId" exact render={(props) => <AdDetails {...props} />} />
+
+          {/* Create Ad Page */}
+          <Route path="/createad" exact render={(props) => <CreateAd {...props} />} />
+
+          {/* Search Page */}
+          <Route path="/search" exact render={(props) => <Search {...props} />} />
+
+          {/* Search Result Page */}
+          <Route path="/searchresult" exact render={(props) => <SearchResult {...props} />} />
         </div>
 
-        {/* Login Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
-          <Login />
-        </div>
-
-        {/* Register Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
-          <Register />
-        </div>
-
-        {/* Ad Details Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
-          <AdDetails />
-        </div>
-
-        {/* Create Ad Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
-          <CreateAd />
-        </div>
-
-        {/* Search Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
-          <Search />
-        </div>
-
-        {/* Search Result Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
-          <SearchResult />
-        </div>
+        <Redirect to="/" />
 
         {/* Main Footer */}
         <div>

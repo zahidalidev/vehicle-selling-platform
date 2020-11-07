@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css';
 
-import colors from "../config/colors"
 import img1 from "../assets/slider2.jpg"
 import ProductCard from '../components/ProductCard';
 

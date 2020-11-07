@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register"
 import AdDetails from "./pages/AdDetails/AdDetails";
+import CreateAd from "./pages/CreateAd/CreateAd";
+import Search from "./pages/Search";
 
 class App extends Component {
   render() {
@@ -39,8 +41,18 @@ class App extends Component {
         </div> */}
 
         {/* Ad Details Page */}
-        <div style={{ marginTop: 80 }} className="col-md-12">
+        {/* <div style={{ marginTop: 80 }} className="col-md-12">
           <AdDetails />
+        </div> */}
+
+        {/* Create Ad Page */}
+        {/* <div style={{ marginTop: 80 }} className="col-md-12">
+          <CreateAd />
+        </div> */}
+
+        {/* Search Page */}
+        <div style={{ marginTop: 80 }} className="col-md-12">
+          <Search />
         </div>
 
         {/* Main Footer */}

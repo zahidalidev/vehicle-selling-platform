@@ -57,10 +57,10 @@ const onSelectProduct = {
     engine: "Autoamtice",
     date: "25 Nov 2010",
     pictures: [
+        "https://i.pinimg.com/originals/42/2b/15/422b15d47b9a0d7eb271011b95498bf2.jpg",
+        "https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/large-2479-s-classsaloon.jpg?itok=QTxMln2k",
         "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/7636/1584075934787/front-left-side-47.jpg",
-        "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/7636/1584075934787/front-left-side-47.jpg",
-        "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/7636/1584075934787/front-left-side-47.jpg",
-        "https://stimg.cardekho.com/images/carexteriorimages/930x620/Lamborghini/Aventador/7636/1584075934787/front-left-side-47.jpg"
+        "https://images.carandbike.com/car-images/large/bmw/z4/bmw-z4.jpg?v=29"
     ],
     category: "Category",
     fullName: "Zahid Ali",

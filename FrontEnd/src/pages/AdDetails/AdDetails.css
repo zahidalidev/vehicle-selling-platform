@@ -1,0 +1,61 @@
+.detailsRightContainer {
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-top: 95px;
+    flex: 1;
+    flex-direction: row;
+}
+
+
+.contactContainer {
+    width: 550px;
+    height: 200px;
+    /* padding-inline-start: 5%; */
+    white-space: nowrap;
+    padding-top: 30px;
+
+}
+
+.detailsSellPrice {
+    padding-left: 15%;
+    margin-top: 3%;
+    
+}
+
+.detailsContact {
+    padding: 10px;
+    width: 70%;
+    padding-left: 15%;
+    margin-left: 15%;
+    margin-top: 8%;
+    cursor: pointer;
+}
+.selllerInfo {
+    width: 550px;
+    height: 300px;
+    /* padding-inline-start: 5%; */
+    white-space: nowrap;
+    padding-top: 30px;
+}
+
+.sellerInfo {
+    padding-left: 25%;
+    margin-top: 1%;
+    font-size: 22px;
+}
+.vehicleFeature {
+    padding-left: 45%;
+    margin-top: 1%;
+    font-size: 22px;
+}
+
+.vehicleFeatures {
+    width: 70%;
+    height: 400px;
+    margin-left: 8%;
+    /* padding-inline-start: 5%; */
+    white-space: nowrap;
+    padding-top: 30px;
+}
+
+

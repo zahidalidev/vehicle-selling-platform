@@ -1,0 +1,8 @@
+
+.userBox2 {
+    box-sizing: content-box;  
+    margin: 180px 180px 180px 180px;
+    height: 100%;
+    justify-content: center !important;
+    align-content: center !important;
+}

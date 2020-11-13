@@ -12,3 +12,36 @@
 .card:hover {
     box-shadow: 5px 5px 8px 5px #888888;;
 }
+
+.cardList {
+    display: 'flex';
+    max-width: 900px;
+    width: 900px;
+    margin-top: 20px;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    margin-bottom: 20px;
+    /* padding-right: -10px !important;
+    padding-left: -20px !important; */
+}
+
+.cardList:hover {
+    box-shadow: 5px 5px 8px 5px #888888;;
+}
+
+.cardListReport {
+    display: 'flex';
+    max-width: 900px;
+    width: 900px;
+    margin-top: 20px;
+    height: 50px;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    margin-bottom: 20px;
+    /* padding-right: -10px !important;
+    padding-left: -20px !important; */
+}
+
+.cardListReport:hover {
+    box-shadow: 5px 5px 8px 5px #888888;;
+}

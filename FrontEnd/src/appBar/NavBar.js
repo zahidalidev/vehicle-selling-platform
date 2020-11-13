@@ -53,7 +53,9 @@ const menues = [
   { title: "Login", path: "/login" },
   { title: "Register", path: "/register" },
   { title: "Post Ad", path: "/createad" },
+  { title: "Profile", path: "/userprofile" },
   { title: "Search", path: "/search" },
+  { title: "Admin", path: "/admin" },
 ]
 
 function NavBar(props) {

@@ -11,6 +11,8 @@ import AdDetails from "./pages/AdDetails/AdDetails";
 import CreateAd from "./pages/CreateAd/CreateAd";
 import Search from "./pages/Search";
 import SearchResult from "./pages/SearchResult";
+import UserProfile from "./pages/UserProfile/UserProfile";
+import Admin from "./pages/Admin/Admin";
 
 
 class App extends Component {
@@ -50,6 +52,12 @@ class App extends Component {
           {/* Search Result Page */}
           <Route path="/searchresult" exact render={(props) => <SearchResult {...props} />} />
         </div>
+
+        {/* User Profile Page */}
+        <Route path="/userprofile" exact render={(props) => <UserProfile {...props} />} />
+
+        {/* Admin Page */}
+        <Route path="/admin" exact render={(props) => <Admin {...props} />} />
 
         <Redirect to="/" />
 

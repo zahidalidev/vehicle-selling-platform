@@ -1,0 +1,15 @@
+.userBox {
+    box-sizing: content-box;  
+    margin: 180px 180px 0px 180px;
+    height: 100%;
+    box-shadow: 2px 5px 9px #888888;
+    border-radius: 10px;
+}
+
+.userBox2 {
+    box-sizing: content-box;  
+    margin: 80px 180px 180px 180px;
+    height: 100%;
+    justify-content: center !important;
+    align-content: center !important;
+}

@@ -187,7 +187,7 @@ class Search extends Component {
                     </div>
                 </div>
                 <div className="row justify-content-md-center" style={{ marginTop: 70 }}>
-                    <Button style={{ width: "15%", backgroundColor: "#178971", marginLeft: "57%" }} variant="contained" color="primary">Search</Button>
+                    <Button onClick={() => this.props.history.push("/searchresult")} style={{ width: "15%", backgroundColor: "#178971", marginLeft: "57%" }} variant="contained" color="primary">Search</Button>
                 </div>
             </div>
         );

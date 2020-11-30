@@ -68,11 +68,14 @@ const ProductCardList = ({ image, title, mainHeading, subHeading, subsubHeading,
                     </FormControl>
                 </div>
 
-                <div className="col-md-2" style={{ marginTop: 40, marginLeft: -30 }}>
+                <div className="col-md-1" style={{ marginTop: 40, marginLeft: -50, whiteSpace: "nowrap" }}>
                     <Button variant="contained" color="secondary" >Delete Ad</Button>
                 </div>
 
-                <div className="col-md-1" style={{ marginTop: 40, marginLeft: -20 }}>
+                <div className="col-md-1" style={{ marginTop: 40, marginLeft: 30 }}>
+                    <Button onClick={() => history.push('/createad')} style={{ backgroundColor: colors.primary }} variant="contained" color="primary" >Edit</Button>
+                </div>
+                <div className="col-md-1" style={{ marginTop: 40, marginLeft: -14 }}>
                     <Button variant="contained" color="primary" >Sold</Button>
                 </div>
             </div>

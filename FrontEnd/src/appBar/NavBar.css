@@ -35,10 +35,10 @@
   background: #d6eea0;
   display: block;
   position: absolute;
-  padding-top: 17%;
-  padding-left: 25%;
-  margin-left: -16px !important;
-  margin-top: -12%;
+  /* padding-top: 17%; */
+  /* padding-left: 25%; */
+  /* margin-left: -16px !important; */
+  /* margin-top: -12%; */
   opacity: 0;
   transition: all 0.8s
 }

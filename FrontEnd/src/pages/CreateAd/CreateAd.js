@@ -33,8 +33,8 @@ class CreateAd extends Component {
     render() {
         return (
             <div className="container" >
-                <p style={{ color: '#424444', fontSize: 35, marginTop: 130, marginBottom: 70 }} >Create Ad</p>
-                <div className="row justify-content-md-center" style={{ marginBottom: 40 }}>
+                {/* <p style={{ color: '#424444', fontSize: 35, marginTop: 130, marginBottom: 70 }} >Create Ad</p> */}
+                <div className="row justify-content-md-center" style={{ marginBottom: 40, marginTop: 130 }}>
                     <div className="col-md-6" style={{ paddingLeft: 130 }} >
                         <CssTextField
                             label="Vehicle Name"

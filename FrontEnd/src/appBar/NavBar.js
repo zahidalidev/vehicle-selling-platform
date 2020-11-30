@@ -56,6 +56,7 @@ const menues = [
   { title: "Profile", path: "/userprofile" },
   { title: "Search", path: "/search" },
   { title: "Admin", path: "/admin" },
+  { title: "Log out", path: "/" },
 ]
 
 function NavBar(props) {
@@ -104,9 +105,9 @@ function NavBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Toolbar>
-                <img src={logo} className={classes.logo} />
-                </Toolbar> */}
+          <Toolbar>
+            {/* <img src={logo} className={classes.logo} /> */}
+          </Toolbar>
 
           <div hidden={windowWidth < 767} >
             <List style={{

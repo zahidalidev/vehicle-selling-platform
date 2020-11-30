@@ -114,13 +114,17 @@ class Footer extends Component {
                                 <h6 className="text-uppercase font-weight-bold">Contact</h6>
                                 <hr style={{ backgroundColor: colors.secondaryLight, width: "60px" }} className="accent-2 col-md-4 mt-0 d-inline-block mx-auto" />
                                 <p>
-                                    <i className="fa fa-envelope mr-3"></i> engrzahid612@gmail.com</p>
+                                    <i className="fa fa-envelope mr-3"></i> m.zahidalidev@gmail.com</p>
                                 <p>
                                     <i className="fa fa-phone mr-3"></i> + 92 336 7088 018</p>
                                 <p>
                                     <i className="fa fa-envelope mr-3"></i> asamadskt@gmail.com</p>
                                 <p>
                                     <i className="fa fa-phone mr-3"></i> + 92 346 6719 203</p>
+                                <p>
+                                    <i className="fa fa-envelope mr-3"></i> ahmadbilaldev@gmail.com</p>
+                                <p>
+                                    <i className="fa fa-phone mr-3"></i> +92 316 6793715</p>
 
                             </div>
                         </div>

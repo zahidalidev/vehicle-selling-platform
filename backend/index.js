@@ -3,18 +3,17 @@ const cors = require('cors')
 
 const app = express()
 
+// to connect with mongodb
+require('./startup/db')()
+
+// to use the routers
+require('./startup/routes')(app)
+
 // using cors to for public sapi
 app.use(cors())
 
-// to recognize the incoming Request Object as a JSON Object
-app.use(express.json())
-
 // setting port from env or 5000
 app.set('port', (process.env.PORT || 5000))
-
-require('./startup/db')()
-require('./startup/routes')(app)
-
 
 // getting port and stating listining on that port
 const port = app.get('port')

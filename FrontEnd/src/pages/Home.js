@@ -79,6 +79,14 @@ const products = [
         price: "PKR 1,23,000",
         city: "Sialkot"
     },
+    {
+        id: 7,
+        image: img1,
+        title: "This is vehicle_7",
+        modelName: "Honda Civic 2018",
+        price: "PKR 1,23,000",
+        city: "Sialkot"
+    },
 ]
 class Home extends Component {
     render() {

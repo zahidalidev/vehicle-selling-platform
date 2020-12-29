@@ -1,5 +1,11 @@
 const express = require('express')
 const cors = require('cors')
+const config = require('config')
+
+if (!config.get('jwtPrivateKey')) {
+    console.log('FATAL ERROR: jwtPrivateKey is not defined')
+    process.exit(1)
+}
 
 const app = express()
 
@@ -9,7 +15,7 @@ require('./startup/db')()
 // to use the routers
 require('./startup/routes')(app)
 
-// using cors to for public sapi
+// using cors to for public API
 app.use(cors())
 
 // setting port from env or 5000

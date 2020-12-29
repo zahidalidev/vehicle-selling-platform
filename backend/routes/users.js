@@ -1,15 +1,18 @@
 const express = require('express')
 const _ = require('lodash')
 const bcrypt = require('bcrypt')
-const validate = require('../middleWare/validate')
 
+const validate = require('../middleWare/validate')
+const auth = require('../middleWare/auth')
 const { User, validateUser } = require('../models/users')
 
 const router = new express.Router()
 
-
-router.get('/me', async (req, res) => {
-    res.send('hi')
+// to get the current user using x-auth-token (json web token) in a header of request, 
+// using auth middle for autherization
+router.get('/me', auth, async (req, res) => {
+    const user = await User.findById(req.user._id).select('-password')  // find user by id and exclude password
+    res.send(user)
 })
 
 router.post('/', validate(validateUser), async (req, res) => {
@@ -23,7 +26,8 @@ router.post('/', validate(validateUser), async (req, res) => {
 
     await user.save()
 
-    res.send(_.pick(user, ['_id', 'fullName', 'email']))
+    const token = user.generateAuthToken()
+    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'fullName', 'email']))
 })
 
 

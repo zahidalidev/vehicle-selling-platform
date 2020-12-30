@@ -19,7 +19,7 @@ router.post('/', validate(validateUser), async (req, res) => {
     let user = User.findOne({ 'email': req.body.email })
     if (!user) return res.status(400).send('user already exist')
 
-    user = new User(_.pick(req.body, ['fullName', 'email', 'contactNumber', 'fullAddress', 'password']))
+    user = new User(_.pick(req.body, ['fullName', 'email', 'contactNumber', 'fullAddress', 'password', 'isAdmin']))
 
     const salt = await bcrypt.genSalt(10)
     user.password = await bcrypt.hash(user.password, salt)
@@ -27,7 +27,7 @@ router.post('/', validate(validateUser), async (req, res) => {
     await user.save()
 
     const token = user.generateAuthToken()
-    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'fullName', 'email']))
+    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'fullName', 'email', 'isAdmin']))
 })
 
 

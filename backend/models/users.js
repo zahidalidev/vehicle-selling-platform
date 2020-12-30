@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 5,
         maxlength: 1024
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -45,7 +49,7 @@ const userSchema = new mongoose.Schema({
 // reference to calling function so we use arrow funcion for stand alone function 
 // if we want to create a method that is part of object we should not use arrow function
 userSchema.methods.generateAuthToken = function () {
-    return jwt.sign({ _id: this._id, fullName: this.fullName, isAdmin: false }, config.get('jwtPrivateKey'))
+    return jwt.sign({ _id: this._id, fullName: this.fullName, isAdmin: this.isAdmin }, config.get('jwtPrivateKey'))
 }
 
 // creating model class 
@@ -58,7 +62,8 @@ function validateUser(user) {
         email: joi.string().min(5).max(255).required().email(),
         contactNumber: joi.number().min(0).required(),
         fullAddress: joi.string().min(5).max(255).required(),
-        password: joi.string().min(5).max(1024).required()
+        password: joi.string().min(5).max(1024).required(),
+        isAdmin: joi.required(),
     };
 
     return joi.validate(user, schema);

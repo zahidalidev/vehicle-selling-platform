@@ -10,9 +10,48 @@ import profileImage from "../../assets/slider2.jpg"
 import UserListCard from '../../components/UserListCard';
 
 class AdminUser extends Component {
+    state = {
+        users: [
+            {
+                userID: 1,
+                fullName: "zahid Ali",
+                email: "m.zahidalidev@gmail.com",
+                contactNumber: "0336-7088018",
+                fullAddress: "satelite town gujranwala"
+            },
+            {
+                userID: 2,
+                fullName: "Ahmad Billal",
+                email: "ahmadbilaldev@gmail.com",
+                contactNumber: "0336-7088018",
+                fullAddress: "satelite town gujranwala"
+            },
+            {
+                userID: 3,
+                fullName: "Abdul Samad",
+                email: "sktabdulsamad@gmail.com",
+                contactNumber: "0336-7088018",
+                fullAddress: "satelite town gujranwala"
+            },
+            {
+                userID: 4,
+                fullName: "zahid Ali",
+                email: "m.zahidalidev@gmail.com",
+                contactNumber: "0336-7088018",
+                fullAddress: "satelite town gujranwala"
+            },
+            {
+                userID: 5,
+                fullName: "zahid Ali",
+                email: "m.zahidalidev@gmail.com",
+                contactNumber: "0336-7088018",
+                fullAddress: "satelite town gujranwala"
+            },
+        ],
+    }
 
     render() {
-        const { users } = this.props;
+        const { users } = this.state;
 
         return (
             <div className="row userBox2">

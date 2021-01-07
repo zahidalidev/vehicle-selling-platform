@@ -13,7 +13,6 @@ import Search from "./pages/Search";
 import SearchResult from "./pages/SearchResult";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Admin from "./pages/Admin/Admin";
-import Mortgage from "./pages/mortgage";
 
 
 class App extends Component {
@@ -29,7 +28,7 @@ class App extends Component {
         </div>
 
         {/* Main Slider */}
-        <Route path="/" exact render={(props) => <Mortgage {...props} />} />
+        <Route path="/" exact render={(props) => <Slider {...props} />} />
         {/* <Route path="/" exact render={(props) => <Slider {...props} />} /> */}
 
         <div style={{ marginTop: 80 }} className="col-md-12">

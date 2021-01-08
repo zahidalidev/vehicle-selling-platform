@@ -9,14 +9,18 @@ if (!config.get('jwtPrivateKey')) {
 
 const app = express()
 
+// using cors to for public API
+app.use(cors())
+
+// to recognize the incoming Request Object as a JSON Object
+app.use(express.json());
+
 // to connect with mongodb
 require('./startup/db')()
 
 // to use the routers
 require('./startup/routes')(app)
 
-// using cors to for public API
-app.use(cors())
 
 // setting port from env or 5000
 app.set('port', (process.env.PORT || 5000))

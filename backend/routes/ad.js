@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
             'engine',
             'date',
             'images',
-            'categoryID',
+            'categoryTitle',
             'userID'
         ]))
         await ad.save()
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
         engine: req.body.engine,
         date: req.body.date,
         images: req.body.images,
-        categoryID: req.body.categoryID,
+        categoryTitle: req.body.categoryTitle,
         userID: req.body.userID,
     }, { new: true })
 

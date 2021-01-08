@@ -63,7 +63,7 @@ function validateUser(user) {
         contactNumber: joi.number().min(0).required(),
         fullAddress: joi.string().min(5).max(255).required(),
         password: joi.string().min(5).max(1024).required(),
-        isAdmin: joi.required(),
+        // isAdmin: joi.boolean,
     };
 
     return joi.validate(user, schema);

@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
+import _ from "lodash"
+import jwtDecode from "jwt-decode";
 
 import NavBar from './appBar/NavBar';
 import Slider from "./slider/Slider";
@@ -16,30 +20,48 @@ import Admin from "./pages/Admin/Admin";
 
 
 class App extends Component {
+  state = {
+    currentUser: {}
+  }
+
+  handleLogin = (history) => {
+    //setting current user that is currentlu logged in
+    const token = localStorage.getItem('token');
+
+    const currentUser = jwtDecode(token);
+
+    if (_.isEmpty(this.state.currentUser)) this.setState({ currentUser })
+    history.push('/home')
+  }
+
   render() {
+    const { currentUser } = this.state;
     return (
       <div className="App">
+
+        {/* toast notification properties */}
+        <ToastContainer autoClose={5000} position={toast.POSITION.TOP_RIGHT} />
 
         {/* AppBar and Drawer */}
         <div className="container">
           <div className="col-md-12" style={{ marginBottom: 70 }} >
-            <NavBar onWindow={window} />
+            <NavBar onWindow={window} onCurrentUser={currentUser} />
           </div>
         </div>
 
         {/* Main Slider */}
-        <Route path="/" exact render={(props) => <Slider {...props} />} />
+        <Route path="/home" exact render={(props) => <Slider {...props} />} />
         {/* <Route path="/" exact render={(props) => <Slider {...props} />} /> */}
 
         <div style={{ marginTop: 80 }} className="col-md-12">
-          {/* Main Page */}
-          <Route path="/" exact render={(props) => <Home {...props} />} />
-
           {/* Login Page */}
-          <Route path="/login" exact render={(props) => <Login {...props} />} />
+          <Route path="/login" exact render={(props) => <Login {...props} onHandleLogin={this.handleLogin} />} />
 
           {/* Register Page */}
           <Route path="/register" exact render={(props) => <Register {...props} />} />
+
+          {/* Main Page */}
+          <Route path="/home" exact render={(props) => <Home {...props} />} />
 
           {/* Ad Details Page */}
           <Route path="/addetails/:vehicleId" exact render={(props) => <AdDetails {...props} />} />
@@ -60,7 +82,7 @@ class App extends Component {
         {/* Admin Page */}
         <Route path="/admin" exact render={(props) => <Admin {...props} />} />
 
-        <Redirect to="/" />
+        {!_.isEmpty(currentUser) ? <Redirect to="/home" /> : <Redirect to="/login" />}
 
         {/* Main Footer */}
         <div>

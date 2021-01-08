@@ -3,11 +3,11 @@
     /* flex: 1; */
     /* flex-direction: row; */
     width: 40%;
-    height: 600px;
+    height: 800px;
     justify-content: center !important;
     align-content: center !important;
     box-shadow: 2px 2px 5px 5px #a4a5a8 !important;
-    margin-top: 120px !important;
+    margin-top: 7vw !important;
 }
 
 .RegisterTextFeild {

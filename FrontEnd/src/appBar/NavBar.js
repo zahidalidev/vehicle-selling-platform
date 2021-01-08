@@ -9,6 +9,7 @@ import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import List from "@material-ui/core/List"
 import { useHistory } from "react-router"
+import _ from "lodash"
 
 import "./NavBar.css"
 import colors from '../config/colors';
@@ -48,28 +49,46 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const menues = [
-  { title: "Home", path: "/" },
-  { title: "Login", path: "/login" },
-  { title: "Register", path: "/register" },
-  { title: "Post Ad", path: "/createad" },
-  { title: "Profile", path: "/userprofile" },
-  { title: "Search", path: "/search" },
-  { title: "Admin", path: "/admin" },
-  { title: "Log out", path: "/" },
-]
 
 function NavBar(props) {
-  const { onWindow } = props;
+  const { onWindow, onCurrentUser } = props;
   const windowWidth = onWindow.innerWidth;
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
   const history = useHistory()
+  const [menues, setMenues] = useState([])
+
 
   // like componentDidMount() in class
   useEffect(() => {
-
-  })
+    if (!_.isEmpty(onCurrentUser.isAdmin)) {
+      setMenues([
+        { title: "Home", path: "/home" },
+        { title: "Post Ad", path: "/createad" },
+        { title: "Profile", path: "/userprofile" },
+        { title: "Search", path: "/search" },
+        { title: "Admin", path: "/admin" },
+        { title: "Log out", path: "/home" },
+      ])
+    } else if (!onCurrentUser.isAdmin) {
+      setMenues([
+        { title: "Home", path: "/home" },
+        { title: "Post Ad", path: "/createad" },
+        { title: "Profile", path: "/userprofile" },
+        { title: "Search", path: "/search" },
+        { title: "Log out", path: "/home" },
+      ])
+    } else {
+      setMenues([
+        { title: "Home", path: "/home" },
+        { title: "Post Ad", path: "/createad" },
+        { title: "Profile", path: "/userprofile" },
+        { title: "Search", path: "/search" },
+        { title: "Login", path: "/login" },
+        { title: "Register", path: "/register" }
+      ])
+    }
+  }, [])
 
   const handleNavigation = (path) => {
     history.push(path)

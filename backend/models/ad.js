@@ -62,7 +62,7 @@ const adSchema = new mongoose.Schema({
     images: {
         type: [String],
     },
-    categoryID: {
+    categoryTitle: {
         type: String,
         required: true,
     },

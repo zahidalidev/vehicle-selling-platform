@@ -131,10 +131,14 @@ class UserProfile extends Component {
                         </div>
                         :
                         <Card className="col-md-7">
-                            <div className="row" style={{ marginTop: "20%", justifyContent: "center", alignItems: "center" }} >
-                                <form encType="multipart/form-data" onSubmit={this.UpdateProfileImage} >
-                                    <input type="file" onChange={this.handleImageChange} required />
-                                    <input style={{ backgroundColor: colors.primary, color: "white" }} type="submit" value="Submit"></input>
+                            <div className="row" style={{ marginLeft: "10%", height: '38vw', marginTop: "5%", justifyContent: "center", alignItems: "center" }} >
+                                <form encType="multipart/form-data" >
+                                    <div style={{ maxWidth: "50%" }} >
+                                        <input style={{ color: colors.primary }} type="file" onChange={this.handleImageChange} required />
+                                    </div>
+                                    {/* <input style={{ backgroundColor: colors.primary, color: "white" }} type="submit" value="Submit"></input> */}
+                                    <Button onClick={this.UpdateProfileImage} style={{ marginLeft: "20%", marginTop: '2vw', backgroundColor: colors.primary, color: "white" }} variant="contained" >Update</Button>
+
                                 </form>
                             </div>
                         </Card>

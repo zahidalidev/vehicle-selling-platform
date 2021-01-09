@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import List from "@material-ui/core/List"
 import { useHistory } from "react-router"
 import _ from "lodash"
+import jwtDecode from "jwt-decode";
+
 
 import "./NavBar.css"
 import colors from '../config/colors';
@@ -51,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function NavBar(props) {
-  const { onWindow, onCurrentUser, onHandleLogout } = props;
+  const { onWindow, onHandleLogout } = props;
   const windowWidth = onWindow.innerWidth;
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -61,17 +63,22 @@ function NavBar(props) {
 
   // like componentDidMount() in class
   useEffect(() => {
-    if (_.isEmpty(onCurrentUser)) {
+    const token = localStorage.getItem('token');
+    let currentUser;
+    if (token) {
+      currentUser = jwtDecode(token);
+    }
+
+    if (_.isEmpty(currentUser)) {
       setMenues([
         { title: "Home", path: "/home" },
-        { title: "Post Ad", path: "/createad" },
         { title: "Profile", path: "/userprofile" },
         { title: "Search", path: "/search" },
         { title: "Login", path: "/login" },
         { title: "Register", path: "/register" }
       ])
     }
-    else if (onCurrentUser.isAdmin) {
+    else if (currentUser.isAdmin) {
       setMenues([
         { title: "Home", path: "/home" },
         { title: "Post Ad", path: "/createad" },
@@ -80,7 +87,7 @@ function NavBar(props) {
         { title: "Admin", path: "/admin" },
         { title: "Log out", path: "/home" },
       ])
-    } else if (!onCurrentUser.isAdmin) {
+    } else if (!currentUser.isAdmin) {
       setMenues([
         { title: "Home", path: "/home" },
         { title: "Post Ad", path: "/createad" },
@@ -91,11 +98,15 @@ function NavBar(props) {
     }
   }, [])
 
+  const [render, setRender] = useState(false)
+
   const handleNavigation = (path, title) => {
+    history.push(path)
+
     if (title === 'Log out') {
       onHandleLogout()
+      setRender(!render)
     }
-    history.push(path)
   }
 
   const handleDrawerToggle = () => {

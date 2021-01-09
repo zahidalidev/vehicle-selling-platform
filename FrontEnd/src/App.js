@@ -24,29 +24,28 @@ class App extends Component {
     currentUser: {}
   }
 
-  handleLogin = (history) => {
+  handleLogin = (history = 'App') => {
     //setting current user that is currentlu logged in
     const token = localStorage.getItem('token');
+    if (token) {
+      const currentUser = jwtDecode(token);
 
-    const currentUser = jwtDecode(token);
-
-    if (_.isEmpty(this.state.currentUser)) this.setState({ currentUser })
-    history.push('/home')
+      if (_.isEmpty(this.state.currentUser)) this.setState({ currentUser })
+      if (history != 'App') {
+        history.push('/home')
+        window.location.reload();
+      }
+    }
   }
 
   handleLogout = () => {
     localStorage.removeItem('token');
     this.setState({ currentUser: {} })
+    window.location.reload();
   }
 
   componentDidMount = () => {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      const currentUser = jwtDecode(token);
-
-      if (_.isEmpty(this.state.currentUser)) this.setState({ currentUser })
-    }
+    this.handleLogin()
   }
 
 
@@ -61,7 +60,7 @@ class App extends Component {
         {/* AppBar and Drawer */}
         <div className="container">
           <div className="col-md-12" style={{ marginBottom: 70 }} >
-            <NavBar onWindow={window} onHandleLogout={this.handleLogout} onCurrentUser={currentUser} />
+            <NavBar onWindow={window} onHandleLogout={this.handleLogout} />
           </div>
         </div>
 

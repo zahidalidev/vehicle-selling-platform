@@ -77,8 +77,9 @@ class UserProfile extends Component {
         try {
             const { data: currentUser } = await updateUser(this.state.currentUser, token)
             this.setState({ currentUser })
+            toast.success("Profile updated")
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             toast.error("User not found")
         }
     }
@@ -97,11 +98,11 @@ class UserProfile extends Component {
 
         try {
             const { data: currentUser } = await updateUserProfile(this.state.currentUser._id, data)
-            console.log(currentUser)
+            // console.log(currentUser)
             this.setState({ currentUser })
             toast.success("Profile Image updated")
         } catch (error) {
-            console.log("hi", error)
+            // console.log("hi", error)
             toast.error("Profile Image not updated")
         }
 

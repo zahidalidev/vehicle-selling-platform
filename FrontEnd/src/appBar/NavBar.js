@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function NavBar(props) {
-  const { onWindow, onCurrentUser } = props;
+  const { onWindow, onCurrentUser, onHandleLogout } = props;
   const windowWidth = onWindow.innerWidth;
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -61,7 +61,17 @@ function NavBar(props) {
 
   // like componentDidMount() in class
   useEffect(() => {
-    if (!_.isEmpty(onCurrentUser.isAdmin)) {
+    if (_.isEmpty(onCurrentUser)) {
+      setMenues([
+        { title: "Home", path: "/home" },
+        { title: "Post Ad", path: "/createad" },
+        { title: "Profile", path: "/userprofile" },
+        { title: "Search", path: "/search" },
+        { title: "Login", path: "/login" },
+        { title: "Register", path: "/register" }
+      ])
+    }
+    else if (onCurrentUser.isAdmin) {
       setMenues([
         { title: "Home", path: "/home" },
         { title: "Post Ad", path: "/createad" },
@@ -78,19 +88,13 @@ function NavBar(props) {
         { title: "Search", path: "/search" },
         { title: "Log out", path: "/home" },
       ])
-    } else {
-      setMenues([
-        { title: "Home", path: "/home" },
-        { title: "Post Ad", path: "/createad" },
-        { title: "Profile", path: "/userprofile" },
-        { title: "Search", path: "/search" },
-        { title: "Login", path: "/login" },
-        { title: "Register", path: "/register" }
-      ])
     }
   }, [])
 
-  const handleNavigation = (path) => {
+  const handleNavigation = (path, title) => {
+    if (title === 'Log out') {
+      onHandleLogout()
+    }
     history.push(path)
   }
 
@@ -101,7 +105,7 @@ function NavBar(props) {
   const drawer = (
     <div style={{ width: "100%", marginTop: 20 }}>
       {menues.map((men, i) => (
-        <Button onClick={() => handleNavigation(men.path)} key={i} className="draweMenu" >{men.title}</Button>
+        <Button onClick={() => handleNavigation(men.path, men.title)} key={i} className="draweMenu" >{men.title}</Button>
       ))}
     </div>
   );
@@ -135,7 +139,7 @@ function NavBar(props) {
               padding: 0,
             }}>
               {menues.map((men, i) => (
-                <Typography onClick={() => handleNavigation(men.path)} key={i} className="windowMenue" variant="h6" color="inherit">
+                <Typography onClick={() => handleNavigation(men.path, men.title)} key={i} className="windowMenue" variant="h6" color="inherit">
                   {men.title}
                 </Typography>
               ))}

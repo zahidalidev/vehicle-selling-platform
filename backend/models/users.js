@@ -36,6 +36,9 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 1024
     },
+    profileImage: {
+        type: String,
+    },
     isAdmin: {
         type: Boolean,
         default: false
@@ -63,6 +66,7 @@ function validateUser(user) {
         contactNumber: joi.number().min(0).required(),
         fullAddress: joi.string().min(5).max(255).required(),
         password: joi.string().min(5).max(1024).required(),
+        profileImage: joi.string(),
         // isAdmin: joi.boolean,
     };
 

@@ -34,6 +34,22 @@ class App extends Component {
     history.push('/home')
   }
 
+  handleLogout = () => {
+    localStorage.removeItem('token');
+    this.setState({ currentUser: {} })
+  }
+
+  componentDidMount = () => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      const currentUser = jwtDecode(token);
+
+      if (_.isEmpty(this.state.currentUser)) this.setState({ currentUser })
+    }
+  }
+
+
   render() {
     const { currentUser } = this.state;
     return (
@@ -45,7 +61,7 @@ class App extends Component {
         {/* AppBar and Drawer */}
         <div className="container">
           <div className="col-md-12" style={{ marginBottom: 70 }} >
-            <NavBar onWindow={window} onCurrentUser={currentUser} />
+            <NavBar onWindow={window} onHandleLogout={this.handleLogout} onCurrentUser={currentUser} />
           </div>
         </div>
 
@@ -82,7 +98,7 @@ class App extends Component {
         {/* Admin Page */}
         <Route path="/admin" exact render={(props) => <Admin {...props} />} />
 
-        {!_.isEmpty(currentUser) ? <Redirect to="/home" /> : <Redirect to="/login" />}
+        <Redirect to="/home" />
 
         {/* Main Footer */}
         <div>

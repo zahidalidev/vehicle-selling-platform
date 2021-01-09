@@ -1,7 +1,7 @@
 import axios from 'axios'
 import http from '../config/http';
 
-const endPoint = http.apiEndPoint;
+const endPoint = http.apiEndPoint + '/api';
 
 // category
 export const getCategories = async () => {
@@ -25,6 +25,20 @@ export const postUser = async (body) => {
 export const login = async (body) => {
     return await axios.post(`${endPoint}/auth`, body);
 }
-// export const postCategory = async () => {
 
-// }
+export const getCurrentUser = async (token) => {
+    return await axios.get(`${endPoint}/users/me`, {
+        headers: { 'x-auth-token': token }
+    })
+}
+
+export const updateUser = async (body, token) => {
+    return await axios.put(`${endPoint}/users/me/${body._id}`, body, {
+        headers: { 'x-auth-token': token }
+    })
+}
+
+export const updateUserProfile = async (id, data) => {
+    return await axios.put(`${endPoint}/users/me/profileImage/${id}`, data)
+}
+

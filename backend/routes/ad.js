@@ -1,11 +1,26 @@
 const express = require('express')
 const _ = require('lodash')
+const multer = require('multer');
+const fs = require('fs-extra')
 
+const auth = require('../middleWare/auth')
 const Ad = require('../models/ad')
 
 const router = new express.Router()
 
-router.post('/', async (req, res) => {
+// saving file 
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './assets/images/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+});
+
+const upload = multer({ storage })
+
+router.post('/', auth, async (req, res) => {
     try {
         let ad = new Ad(_.pick(req.body, [
             'vehicleName',
@@ -20,7 +35,6 @@ router.post('/', async (req, res) => {
             'adStatus',
             'engine',
             'date',
-            'images',
             'categoryTitle',
             'userID'
         ]))
@@ -30,6 +44,19 @@ router.post('/', async (req, res) => {
     } catch (error) {
         res.send(error)
     }
+})
+
+router.put('/images/:id', upload.single('file'), async (req, res) => {
+
+    let oldAd = await Ad.findById(req.params.id)
+    let ad = await Ad.findByIdAndUpdate(req.params.id, {
+        images: [...oldAd.images, req.file.path.replace('assets\\', '')]
+    }, { new: true })
+
+    if (!ad) return res.status(404).send('The ad with the given ID not found')
+
+    console.log(ad)
+    res.send(ad)
 })
 
 router.put('/:id', async (req, res) => {
@@ -55,6 +82,7 @@ router.put('/:id', async (req, res) => {
 
     res.send(ad)
 })
+
 
 router.delete('/:id', async (req, res) => {
     const ad = await Ad.findByIdAndRemove(req.params.id);

@@ -12,5 +12,5 @@ module.exports = function (app) {
     app.use('/api/auth', auth);
 
     app.use('/api/category', category)
-    app.use('/api/ad', Ad)
+    app.use('/api/userPosts', Ad)
 }

@@ -11,7 +11,7 @@ const adSchema = new mongoose.Schema({
         maxlength: 255
     },
     registrationYear: {
-        type: Number,
+        type: String,
         required: true,
     },
     city: {
@@ -48,7 +48,6 @@ const adSchema = new mongoose.Schema({
     },
     adStatus: {
         type: String,
-        required: true,
     },
     engine: {
         type: String,
@@ -56,11 +55,11 @@ const adSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true,
         default: Date.now
     },
     images: {
         type: [String],
+        default: []
     },
     categoryTitle: {
         type: String,
@@ -71,7 +70,6 @@ const adSchema = new mongoose.Schema({
         required: true,
     },
 })
-
 
 // creating model class 
 const Ad = mongoose.model('ad', adSchema)

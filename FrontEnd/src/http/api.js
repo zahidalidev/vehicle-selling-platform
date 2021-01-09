@@ -42,3 +42,13 @@ export const updateUserProfile = async (id, data) => {
     return await axios.put(`${endPoint}/users/me/profileImage/${id}`, data)
 }
 
+// Ad
+export const postAd = async (body, token) => {
+    return await axios.post(`${endPoint}/userPosts`, body, {
+        headers: { 'x-auth-token': token }
+    });
+}
+
+export const postAdImages = async (id, data) => {
+    return await axios.put(`${endPoint}/userPosts/images/${id}`, data)
+}

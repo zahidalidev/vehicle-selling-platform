@@ -126,7 +126,6 @@ class UserProfile extends Component {
                                     height="500"
                                     image={`${endPoint}/${currentUser.profileImage}`}
                                     style={{ padding: 20, borderRadius: 30 }}
-
                                 />
                             </div>
                         </div>

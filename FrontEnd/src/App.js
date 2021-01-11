@@ -13,6 +13,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register"
 import AdDetails from "./pages/AdDetails/AdDetails";
 import CreateAd from "./pages/CreateAd/CreateAd";
+import UpdateAd from "./pages/UpdateAd/UpdateAd";
 import Search from "./pages/Search";
 import SearchResult from "./pages/SearchResult";
 import UserProfile from "./pages/UserProfile/UserProfile";
@@ -100,6 +101,9 @@ class App extends Component {
           {/* Create Ad Page */}
           <Route path="/createad" exact render={(props) => <CreateAd {...props} />} />
 
+          {/* Update Ad Page */}
+          <Route path="/UpdateAd/:id" exact render={(props) => <UpdateAd {...props} />} />
+
           {/* Search Page */}
           <Route path="/search" exact render={(props) => <Search {...props} />} />
 
@@ -108,7 +112,7 @@ class App extends Component {
         </div>
 
         {/* User Profile Page */}
-        <Route path="/userprofile" exact render={(props) => <UserProfile {...props} />} />
+        <Route path="/userprofile" exact render={(props) => <UserProfile {...props} onGetAds={this.getAds} />} />
 
         {/* Admin Page */}
         <Route path="/admin" exact render={(props) => <Admin {...props} />} />

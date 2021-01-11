@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import jwtDecode from "jwt-decode"
 import axios from 'axios'
 import http from "../../config/http"
-import { getCategories, postAd, postAdImages } from '../../http/api';
+import { getCategories, postAd, postAdImages, getAdsDetail, updateAd } from '../../http/api';
 
 
 const endPoint = http.apiEndPoint + '/api';
@@ -36,31 +36,29 @@ const CssTextField = withStyles({
     },
 })(TextField);
 
-class CreateAd extends Component {
+class UpdateAd extends Component {
 
     state = {
         categories: [],
-        ad: {
-            vehicleName: '',
-            registrationYear: '',
-            city: '',
-            mileage: '',
-            exteriorColour: '',
-            vehicleModel: '',
-            vehicleDescription: '',
-            sellingPrice: '',
-            vehicleStatus: '',
-            engine: '',
-            categoryTitle: '',
-            userID: '',
-        },
+        ad: {},
         images: []
     }
 
+    getAdDetail = async () => {
+        try {
+            const id = this.props.match.params.id
+            const { data: ad } = await getAdsDetail(id);
+            this.setState({ ad })
+            console.log(ad)
+        } catch (error) {
+            toast.error('Ads detail error')
+        }
+    }
     componentDidMount = async () => {
         try {
             const { data: categories } = await getCategories()
             this.setState({ categories })
+            await this.getAdDetail()
         } catch (error) {
             toast.error('getting categories Error: ' + error)
         }
@@ -89,13 +87,14 @@ class CreateAd extends Component {
         // preparing body of request
         let ad = this.state.ad;
         const token = localStorage.getItem('token')
-        let user = token ? jwtDecode(token) : {}
-        ad.userID = user._id
 
         try {
-            const { data: currentAd } = await postAd(ad, token)
+            const { data: currentAd } = await updateAd(ad, token)
 
             let i = this.state.images.length;
+            if (i === 0) {
+                toast.success('Ad Updated')
+            }
             if (currentAd) {
                 // preparing images
                 this.state.images.map(async (image, j) => {
@@ -120,8 +119,8 @@ class CreateAd extends Component {
 
         return (
             <div className="container" >
-                <p style={{ color: '#424444', fontSize: 35, marginTop: 130 }} >Create Ad</p>
-                <div className="row justify-content-md-center" style={{ marginBottom: 40, marginTop: 80 }}>
+                <p style={{ color: '#424444', fontSize: 35, marginTop: 130 }} >Update Ad</p>
+                <div className="row justify-content-md-center" style={{ marginBottom: 40, marginTop: 60 }}>
                     <div className="col-md-6" style={{ paddingLeft: 130 }} >
                         <CssTextField
                             label="Vehicle Name"
@@ -131,6 +130,7 @@ class CreateAd extends Component {
                             style={{ width: "90%" }}
                             value={ad.vehicleName}
                             onChange={(e) => this.handleAd(e, 'vehicleName')}
+                            autoFocus={true}
                         />
                     </div>
                     <div className="col-md-6">
@@ -256,7 +256,7 @@ class CreateAd extends Component {
                 <div className="row justify-content-md-center" style={{ marginBottom: 40 }}>
                     <div className="col-md-6" style={{ paddingLeft: 130 }} >
                         <form encType="multipart/form-data" >
-                            Select image to upload first three will be selected:
+                            Select images only id want to Update (three):
                             <input multiple type="file" onChange={this.handleImageChange} required />
 
                         </form>
@@ -274,11 +274,11 @@ class CreateAd extends Component {
                     </div>
                 </div>
                 <div className="row justify-content-md-center" style={{ marginTop: 70 }}>
-                    <Button onClick={this.handleAdPost} style={{ width: "15%", backgroundColor: "#178971" }} variant="contained" color="primary">Publish Ad</Button>
+                    <Button onClick={this.handleAdPost} style={{ width: "15%", backgroundColor: "#178971" }} variant="contained" color="primary">Update Ad</Button>
                 </div>
             </div>
         );
     }
 }
 
-export default CreateAd;
+export default UpdateAd;

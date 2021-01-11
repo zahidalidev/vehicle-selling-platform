@@ -4,7 +4,8 @@ const multer = require('multer');
 const fs = require('fs-extra')
 
 const auth = require('../middleWare/auth')
-const Ad = require('../models/ad')
+const Ad = require('../models/ad');
+const { where } = require('../models/ad');
 
 const router = new express.Router()
 
@@ -57,7 +58,8 @@ router.put('/images/:id', upload.single('file'), async (req, res) => {
     );
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
+    console.log('here')
     const ad = await Ad.findByIdAndUpdate(req.params.id, {
         vehicleName: req.body.vehicleName,
         registrationYear: req.body.registrationYear,
@@ -100,9 +102,34 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const ad = await Ad.findById(req.params.id);
+        if (!ad) return res.status(404).send('The ad with the given ID not found')
+        res.send(ad)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
+router.get('/my/:id', async (req, res) => {
+    try {
+        const ads = await Ad.find().where('userID').equals(req.params.id).select(['vehicleName', 'sellingPrice', 'vehicleModel', 'images']);
+
+        for (let i = 0; i <= ads.length - 1; i++) {
+            ads[i].images = ads[i].images[0]
+        }
+
+        res.send(ads)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 router.get('/', async (req, res) => {
     try {
         let ads = await Ad.find().select(['vehicleName', 'sellingPrice', 'city', 'vehicleModel', 'images']);
+
         for (let i = 0; i <= ads.length - 1; i++) {
             ads[i].images = ads[i].images[0]
         }

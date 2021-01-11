@@ -48,6 +48,7 @@ const adSchema = new mongoose.Schema({
     },
     adStatus: {
         type: String,
+        default: 'available'
     },
     engine: {
         type: String,

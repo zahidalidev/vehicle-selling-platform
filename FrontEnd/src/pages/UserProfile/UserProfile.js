@@ -7,45 +7,15 @@ import { toast } from 'react-toastify';
 import http from '../../config/http';
 import colors from '../../config/colors';
 import "./UserProfile.css"
-import profileImageLocal from "../../assets/slider2.jpg"
 import ProductCardList from '../../components/ProductCardList';
-import { getCurrentUser, updateUser, updateUserProfile } from '../../http/api';
+import { getCurrentUser, getCurrentUserAds, updateUser, updateUserProfile, deleteUserAd } from '../../http/api';
 
 const endPoint = http.apiEndPoint;
 
 class UserProfile extends Component {
 
     state = {
-        ads: [
-            {
-                image: profileImageLocal,
-                title: "Honda city",
-                mainHeading: "Honda city",
-                subHeading: "PKR 200,000",
-                subsubHeading: "sub sub",
-            },
-            {
-                image: profileImageLocal,
-                title: "Honda city",
-                mainHeading: "Honda city",
-                subHeading: "PKR 200,000",
-                subsubHeading: "sub sub",
-            },
-            {
-                image: profileImageLocal,
-                title: "Honda city",
-                mainHeading: "Honda city",
-                subHeading: "PKR 200,000",
-                subsubHeading: "sub sub",
-            },
-            {
-                image: profileImageLocal,
-                title: "Honda city",
-                mainHeading: "Honda city",
-                subHeading: "PKR 200,000",
-                subsubHeading: "sub sub",
-            },
-        ],
+        ads: [],
         showFullNameInput: false,
         showEmailInput: false,
         showNumberInput: false,
@@ -55,14 +25,29 @@ class UserProfile extends Component {
         profileImage: null
     }
 
-    componentDidMount = async () => {
+    getAds = async (id) => {
+        try {
+            const { data: ads } = await getCurrentUserAds(id)
+            this.setState({ ads })
+        } catch (error) {
+            toast.error('Getting user ads error')
+        }
+    }
+
+    getUser = async () => {
         const token = localStorage.getItem('token');
         try {
             const { data: currentUser } = await getCurrentUser(token)
             this.setState({ currentUser })
+            return currentUser._id
         } catch (error) {
             toast.error("User not found")
         }
+    }
+
+    componentDidMount = async () => {
+        const id = await this.getUser()
+        await this.getAds(id)
     }
 
     handleCurrentUserUpdate = (e, name) => {
@@ -109,6 +94,27 @@ class UserProfile extends Component {
         this.setState({ showFileInput: false })
     }
 
+    deleteAd = async (id) => {
+        const originalAds = this.state.ads;
+        let ads = this.state.ads;
+        ads.map((ad, i) => {
+            if (ad._id === id) {
+                ads.splice(i, 1)
+            }
+        })
+        this.setState({ ads })
+
+        try {
+            const { data } = await deleteUserAd(id)
+            console.log(data)
+            toast.success('Ad Deleted')
+            this.props.onGetAds()
+        } catch (error) {
+            this.setState({ ads: originalAds })
+        }
+        console.log(ads)
+    }
+
     render() {
 
         const { ads, showFullNameInput, showEmailInput, showNumberInput, showAddressInput, showFileInput, currentUser } = this.state;
@@ -137,7 +143,10 @@ class UserProfile extends Component {
                                         <input style={{ color: colors.primary }} type="file" onChange={this.handleImageChange} required />
                                     </div>
                                     {/* <input style={{ backgroundColor: colors.primary, color: "white" }} type="submit" value="Submit"></input> */}
-                                    <Button onClick={this.UpdateProfileImage} style={{ marginLeft: "20%", marginTop: '2vw', backgroundColor: colors.primary, color: "white" }} variant="contained" >Update</Button>
+                                    <div className="row" >
+                                        <Button onClick={() => { this.setState({ showFileInput: false }) }} style={{ marginLeft: "6%", marginTop: '2vw', backgroundColor: colors.primaryLight, color: "white" }} variant="contained" >Cancel</Button>
+                                        <Button onClick={this.UpdateProfileImage} style={{ marginLeft: "5%", marginTop: '2vw', backgroundColor: colors.primary, color: "white" }} variant="contained" >Update</Button>
+                                    </div>
 
                                 </form>
                             </div>
@@ -234,12 +243,13 @@ class UserProfile extends Component {
                         <div className="row" style={{ justifyContent: "center", alignContent: "center", marginTop: 100 }} >
                             {ads.map((ad, i) => (
                                 <ProductCardList
-                                    image={ad.image}
-                                    title={ad.title}
-                                    mainHeading={ad.mainHeading}
-                                    subHeading={ad.subHeading}
-                                    subsubHeading={ad.subsubHeading}
-                                    id={i}
+                                    image={`${endPoint}/${ad.images[0]}`}
+                                    title={ad.vehicleName}
+                                    mainHeading={ad.vehicleName}
+                                    subHeading={ad.sellingPrice}
+                                    subsubHeading={ad.vehicleModel}
+                                    adID={ad._id}
+                                    onDeleteAd={this.deleteAd}
                                 />
                             ))
                             }

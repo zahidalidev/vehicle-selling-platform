@@ -57,10 +57,24 @@ export const postAdImages = async (id, data) => {
     return await axios.put(`${endPoint}/userPosts/images/${id}`, data)
 }
 
+export const updateAd = async (body, token) => {
+    return await axios.put(`${endPoint}/userPosts/${body._id}`, body, {
+        headers: { 'x-auth-token': token }
+    });
+}
+
 export const getAllAds = async () => {
     return await axios.get(`${endPoint}/userPosts`)
 }
 
 export const getAdsDetail = async (id) => {
     return await axios.get(`${endPoint}/userPosts/${id}`)
+}
+
+export const getCurrentUserAds = async (id) => {
+    return await axios.get(`${endPoint}/userPosts/my/${id}`)
+}
+
+export const deleteUserAd = async (id) => {
+    return await axios.delete(`${endPoint}/userPosts/${id}`)
 }

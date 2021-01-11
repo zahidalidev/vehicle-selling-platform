@@ -15,8 +15,8 @@
 
 .cardList {
     display: 'flex';
-    max-width: 1200px;
-    width: 1200px !important;
+    max-width: 800px;
+    width: 800px !important;
     margin-top: 20px;
     /* margin-left: 10px; */
     /* margin-right: 10px; */

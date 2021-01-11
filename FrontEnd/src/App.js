@@ -18,14 +18,15 @@ import Search from "./pages/Search";
 import SearchResult from "./pages/SearchResult";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Admin from "./pages/Admin/Admin";
-import { getAllAds } from "./http/api";
+import { getAllAds, searchAd } from "./http/api";
 
 
 class App extends Component {
   state = {
     currentUser: {},
     ads1: [],
-    ads2: []
+    ads2: [],
+    searchResult: []
   }
 
   handleLogin = (history = 'App') => {
@@ -65,9 +66,21 @@ class App extends Component {
     await this.getAds()
   }
 
+  searchAd = async (history, body) => {
+    try {
+      const { data: searchResult } = await searchAd(body)
+      this.setState({ searchResult })
+      console.log(searchResult)
+
+      history.push("/searchresult");
+    } catch (error) {
+      toast.error('Search Error')
+    }
+  }
+
 
   render() {
-    const { currentUser, ads1, ads2 } = this.state;
+    const { currentUser, ads1, ads2, searchResult } = this.state;
     return (
       <div className="App">
 
@@ -105,10 +118,10 @@ class App extends Component {
           <Route path="/UpdateAd/:id" exact render={(props) => <UpdateAd {...props} />} />
 
           {/* Search Page */}
-          <Route path="/search" exact render={(props) => <Search {...props} />} />
+          <Route path="/search" exact render={(props) => <Search {...props} onSearchAd={this.searchAd} />} />
 
           {/* Search Result Page */}
-          <Route path="/searchresult" exact render={(props) => <SearchResult {...props} />} />
+          <Route path="/searchresult" exact render={(props) => <SearchResult {...props} onSearchResult={searchResult} />} />
         </div>
 
         {/* User Profile Page */}

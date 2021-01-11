@@ -115,6 +115,23 @@ router.delete('/:id', async (req, res) => {
 router.get('/my/:id', async (req, res) => {
     try {
         const ads = await Ad.find().where('userID').equals(req.params.id).select(['vehicleName', 'sellingPrice', 'vehicleModel', 'images']);
+        for (let i = 0; i <= ads.length - 1; i++) {
+            ads[i].images = ads[i].images[0]
+        }
+
+        console.log(ads)
+
+        res.send(ads)
+    } catch (error) {
+        res.send(error)
+    }
+})
+router.get('/search/posts', async (req, res) => {
+    try {
+        let ads = await Ad.find({
+            $and: [{ city: req.body.city }, { registrationYear: req.body.registrationYear },
+            { engine: req.body.engine }, { vehicleModel: req.body.vehicleModel }, { exteriorColour: req.body.exteriorColour }]
+        }).select(['vehicleName', 'sellingPrice', 'vehicleModel', 'city', 'images']);
 
         for (let i = 0; i <= ads.length - 1; i++) {
             ads[i].images = ads[i].images[0]
@@ -125,7 +142,6 @@ router.get('/my/:id', async (req, res) => {
         res.send(error)
     }
 })
-
 router.get('/', async (req, res) => {
     try {
         let ads = await Ad.find().select(['vehicleName', 'sellingPrice', 'city', 'vehicleModel', 'images']);
@@ -139,5 +155,7 @@ router.get('/', async (req, res) => {
         res.send(error)
     }
 })
+
+
 
 module.exports = router;

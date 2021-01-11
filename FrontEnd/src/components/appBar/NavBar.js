@@ -12,9 +12,9 @@ import { useHistory } from "react-router"
 import _ from "lodash"
 import jwtDecode from "jwt-decode";
 
-
 import "./NavBar.css"
-import colors from '../config/colors';
+import colors from '../../config/colors';
+import autoZone from "../../assets/autozonelogo.png"
 
 const drawerWidth = 130;
 const appBarHeight = 70;
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
   logo: {
     marginTop: window.innerWidth < 768 ? -90 : 5,
-    marginLeft: 20,
+    // marginLeft: 20,
     width: window.innerWidth < 768 ? 200 : 370,
     height: window.innerWidth < 768 ? appBarHeight - 30 : appBarHeight - 10,
   },
@@ -130,7 +130,7 @@ function NavBar(props) {
 
       <AppBar position="fixed" className="appBar" elevation={0}>
 
-        <Toolbar className="toolbar">
+        <Toolbar className="toolbar" style={{ width: "100%", flex: 3, justifyContent: "flex-start", alignItems: "center" }} >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -139,15 +139,15 @@ function NavBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Toolbar>
-            {/* <img src={logo} className={classes.logo} /> */}
+          <Toolbar style={{ width: "100%", flex: 3, justifyContent: "flex-start", alignItems: "flex-start" }} >
+            <img style={{ padding: "0.5vw", paddingTop: 0 }} src={autoZone} className={classes.logo} />
           </Toolbar>
 
           <div hidden={windowWidth < 767} >
             <List style={{
               display: 'flex',
               flexDirection: 'row',
-              padding: 0,
+              paddingTop: '0.2vw',
             }}>
               {menues.map((men, i) => (
                 <Typography onClick={() => handleNavigation(men.path, men.title)} key={i} className="windowMenue" variant="h6" color="inherit">

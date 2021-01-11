@@ -3,7 +3,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import 'react-multi-carousel/lib/styles.css';
 import Particles from 'react-particles-js'
 
-import img3 from "../assets/hero.jpg"
+import img3 from "../../assets/hero.jpg"
 import "./Slider.css"
 
 class Slider extends Component {

@@ -5,8 +5,8 @@ import "react-toastify/dist/ReactToastify.css"
 import _ from "lodash"
 import jwtDecode from "jwt-decode";
 
-import NavBar from './appBar/NavBar';
-import Slider from "./slider/Slider";
+import NavBar from './components/appBar/NavBar';
+import Slider from "./components/slider/Slider";
 import Home from './pages/Home';
 import Footer from "./components/Footer";
 import Login from "./pages/Login/Login";

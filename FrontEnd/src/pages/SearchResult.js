@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'react-multi-carousel/lib/styles.css';
+import '../..//node_modules/react-multi-carousel/lib/styles.css';
 
 import colors from "../config/colors"
 import img1 from "../assets/slider2.jpg"

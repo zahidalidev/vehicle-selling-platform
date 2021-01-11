@@ -103,7 +103,11 @@ router.get('/:id', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const ads = await Ad.find();
+        let ads = await Ad.find().select(['vehicleName', 'sellingPrice', 'city', 'vehicleModel', 'images']);
+        for (let i = 0; i <= ads.length - 1; i++) {
+            ads[i].images = ads[i].images[0]
+        }
+
         res.send(ads)
     } catch (error) {
         res.send(error)

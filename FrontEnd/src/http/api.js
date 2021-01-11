@@ -52,3 +52,7 @@ export const postAd = async (body, token) => {
 export const postAdImages = async (id, data) => {
     return await axios.put(`${endPoint}/userPosts/images/${id}`, data)
 }
+
+export const getAllAds = async () => {
+    return await axios.get(`${endPoint}/userPosts`)
+}

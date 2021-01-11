@@ -93,7 +93,6 @@ class CreateAd extends Component {
         ad.userID = user._id
 
         try {
-
             const { data: currentAd } = await postAd(ad, token)
 
             let i = this.state.images.length;
@@ -104,17 +103,14 @@ class CreateAd extends Component {
                     dataForm.append('file', image);
                     const { data: resData } = await postAdImages(currentAd._id, dataForm)
                     let res = resData
-                    console.log(j)
-                    if (i === j - 1) {
+                    if (i === j + 1) {
                         toast.success('Ad Created and Published')
-                        console.log(res)
                     }
                 })
             }
 
-
         } catch (error) {
-            console.log(error)
+            toast.error("Ad not added try again" + error.message)
         }
 
     }

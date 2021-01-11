@@ -17,11 +17,14 @@ import Search from "./pages/Search";
 import SearchResult from "./pages/SearchResult";
 import UserProfile from "./pages/UserProfile/UserProfile";
 import Admin from "./pages/Admin/Admin";
+import { getAllAds } from "./http/api";
 
 
 class App extends Component {
   state = {
-    currentUser: {}
+    currentUser: {},
+    ads1: [],
+    ads2: []
   }
 
   handleLogin = (history = 'App') => {
@@ -44,13 +47,26 @@ class App extends Component {
     window.location.reload();
   }
 
-  componentDidMount = () => {
+  getAds = async () => {
+    try {
+      const { data: ads1 } = await getAllAds()
+
+      const ads2 = ads1.splice(0, ads1.length / 2)
+      this.setState({ ads1, ads2 })
+    } catch (error) {
+      toast.error('Ads getting Error')
+      console.log(error)
+    }
+  }
+
+  componentDidMount = async () => {
     this.handleLogin()
+    await this.getAds()
   }
 
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser, ads1, ads2 } = this.state;
     return (
       <div className="App">
 
@@ -76,7 +92,7 @@ class App extends Component {
           <Route path="/register" exact render={(props) => <Register {...props} />} />
 
           {/* Main Page */}
-          <Route path="/home" exact render={(props) => <Home {...props} />} />
+          <Route path="/home" exact render={(props) => <Home {...props} onAds1={ads1} onAds2={ads2} />} />
 
           {/* Ad Details Page */}
           <Route path="/addetails/:vehicleId" exact render={(props) => <AdDetails {...props} />} />

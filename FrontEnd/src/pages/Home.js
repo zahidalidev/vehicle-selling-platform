@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import Carousel from "react-multi-carousel";
+import { toast } from 'react-toastify';
 import '../../node_modules/react-multi-carousel/lib/styles.css';
+import http from '../config/http';
 
 import img1 from "../assets/slider2.jpg"
 import ProductCard from '../components/ProductCard';
+import { getAllAds } from '../http/api';
 
+const endPoint = http.apiEndPoint;
 
 const responsive = {
     superLargeDesktop: {
@@ -89,7 +93,9 @@ const products = [
     },
 ]
 class Home extends Component {
+
     render() {
+        const { onAds1: ads1, onAds2: ads2 } = this.props;
         return (
             <div style={{ marginLeft: -14, marginRight: -14, marginBottom: 100 }}>
                 <div style={{ marginLeft: 90, marginRight: 50, marginBottom: 100 }} >
@@ -112,8 +118,8 @@ class Home extends Component {
                         itemClass="carousel-item-padding-40-px"
 
                     >
-                        {products.map((vehicle, i) => (
-                            <ProductCard key={i} id={vehicle.id} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
+                        {ads1.map((vehicle, i) => (
+                            <ProductCard key={i} id={vehicle._id} image={`${endPoint}/${vehicle.images[0]}`} title={vehicle.vehicleName} mainHeading={`${vehicle.vehicleName} ${vehicle.vehicleModel}`} subHeading={vehicle.sellingPrice} subsubHeading={vehicle.city} />
                         ))}
                     </Carousel>
                 </div>
@@ -138,8 +144,8 @@ class Home extends Component {
                             itemClass="carousel-item-padding-40-px"
 
                         >
-                            {products.map((vehicle, i) => (
-                                <ProductCard key={i} id={vehicle.id} image={img1} title={vehicle.title} mainHeading={vehicle.modelName} subHeading={vehicle.price} subsubHeading={vehicle.city} />
+                            {ads2.map((vehicle, i) => (
+                                <ProductCard key={i} id={vehicle._id} image={`${endPoint}/${vehicle.images[0]}`} title={vehicle.vehicleName} mainHeading={`${vehicle.vehicleName} ${vehicle.vehicleModel}`} subHeading={vehicle.sellingPrice} subsubHeading={vehicle.city} />
                             ))}
                         </Carousel>
                     </div>

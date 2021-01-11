@@ -42,6 +42,10 @@ export const updateUserProfile = async (id, data) => {
     return await axios.put(`${endPoint}/users/me/profileImage/${id}`, data)
 }
 
+export const getAdOwner = async (id) => {
+    return await axios.get(`${endPoint}/users/adOwner/${id}`)
+}
+
 // Ad
 export const postAd = async (body, token) => {
     return await axios.post(`${endPoint}/userPosts`, body, {
@@ -55,4 +59,8 @@ export const postAdImages = async (id, data) => {
 
 export const getAllAds = async () => {
     return await axios.get(`${endPoint}/userPosts`)
+}
+
+export const getAdsDetail = async (id) => {
+    return await axios.get(`${endPoint}/userPosts/${id}`)
 }

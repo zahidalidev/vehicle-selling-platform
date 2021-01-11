@@ -94,7 +94,6 @@ router.get('/:id', async (req, res) => {
     try {
         const ad = await Ad.findById(req.params.id);
         if (!ad) return res.status(404).send('The ad with the given ID not found')
-
         res.send(ad)
     } catch (error) {
         res.send(error)

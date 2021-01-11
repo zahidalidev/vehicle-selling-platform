@@ -78,6 +78,7 @@ class CreateAd extends Component {
         for (var i = 0; (i < event.target.files.length && i < 3); i++) {
             images[i] = event.target.files.item(i);
         }
+        console.log(images)
         this.setState({
             images: images
         })
@@ -95,19 +96,22 @@ class CreateAd extends Component {
 
             const { data: currentAd } = await postAd(ad, token)
 
-            let res = {}
-
+            let i = this.state.images.length;
             if (currentAd) {
                 // preparing images
-                this.state.images.map(async (image) => {
+                this.state.images.map(async (image, j) => {
                     let dataForm = new FormData();
                     dataForm.append('file', image);
                     const { data: resData } = await postAdImages(currentAd._id, dataForm)
-                    res = resData
+                    let res = resData
+                    console.log(j)
+                    if (i === j - 1) {
+                        toast.success('Ad Created and Published')
+                        console.log(res)
+                    }
                 })
             }
 
-            console.log(res)
 
         } catch (error) {
             console.log(error)

@@ -47,16 +47,14 @@ router.post('/', auth, async (req, res) => {
 })
 
 router.put('/images/:id', upload.single('file'), async (req, res) => {
-
-    let oldAd = await Ad.findById(req.params.id)
-    let ad = await Ad.findByIdAndUpdate(req.params.id, {
-        images: [...oldAd.images, req.file.path.replace('assets\\', '')]
-    }, { new: true })
-
-    if (!ad) return res.status(404).send('The ad with the given ID not found')
-
-    console.log(ad)
-    res.send(ad)
+    await Ad.findByIdAndUpdate(req.params.id,
+        { "$addToSet": { "images": req.file.path.replace('assets\\', '') } },
+        { "new": true, "upsert": true },
+        function (err, managerparent) {
+            if (err) return res.status(404).send('The ad with the given ID not found');
+            res.send(managerparent);
+        }
+    );
 })
 
 router.put('/:id', async (req, res) => {

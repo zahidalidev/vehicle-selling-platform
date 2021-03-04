@@ -126,17 +126,19 @@ router.get('/my/:id', async (req, res) => {
         res.send(error)
     }
 })
-router.get('/search/posts', async (req, res) => {
+router.post('/search/posts', async (req, res) => {
     try {
+        console.log("body: ", req.body)
         let ads = await Ad.find({
             $and: [{ city: req.body.city }, { registrationYear: req.body.registrationYear },
-            { engine: req.body.engine }, { vehicleModel: req.body.vehicleModel }, { exteriorColour: req.body.exteriorColour }]
+            { engine: req.body.engine }, { exteriorColour: req.body.exteriorColour }]
         }).select(['vehicleName', 'sellingPrice', 'vehicleModel', 'city', 'images']);
 
         for (let i = 0; i <= ads.length - 1; i++) {
             ads[i].images = ads[i].images[0]
         }
 
+        console.log("res: ", ads)
         res.send(ads)
     } catch (error) {
         res.send(error)

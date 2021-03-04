@@ -67,6 +67,7 @@ class App extends Component {
   }
 
   searchAd = async (history, body) => {
+    console.log("bod: ", body)
     try {
       const { data: searchResult } = await searchAd(body)
       this.setState({ searchResult })

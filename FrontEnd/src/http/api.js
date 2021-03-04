@@ -80,5 +80,5 @@ export const deleteUserAd = async (id) => {
 }
 
 export const searchAd = async (body) => {
-    return await axios.get(`${endPoint}/userPosts/search/posts`, body)
+    return await axios.post(`${endPoint}/userPosts/search/posts`, body)
 }

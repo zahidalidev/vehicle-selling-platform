@@ -22,6 +22,14 @@ class SearchResult extends Component {
                             <ProductCard key={i} id={vehicle._id} image={`${endPoint}/${vehicle.images[0]}`} title={vehicle.vehicleName} mainHeading={vehicle.vehicleName + ' ' + vehicle.vehicleModel} subHeading={vehicle.sellingPrice} subsubHeading={vehicle.city} />
                         </div>
                     ))}
+                    {
+                        onSearchResult.length === 0
+                            ?
+                            <div className="row justify-content-md-center" style={{ width: "100%" }}>
+                                <h1 style={{ color: colors.primary }} >Vehicles not found</h1>
+                            </div>
+                            : null
+                    }
                 </div>
             </div>
         );

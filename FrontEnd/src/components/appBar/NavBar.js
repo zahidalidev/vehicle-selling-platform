@@ -72,7 +72,6 @@ function NavBar(props) {
     if (_.isEmpty(currentUser)) {
       setMenues([
         { title: "Home", path: "/home" },
-        { title: "Profile", path: "/userprofile" },
         { title: "Search", path: "/search" },
         { title: "Login", path: "/login" },
         { title: "Register", path: "/register" }

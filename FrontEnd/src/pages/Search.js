@@ -12,7 +12,6 @@ class Search extends Component {
             city: '',
             registrationYear: '',
             engine: '',
-            vehicleModel: '',
             exteriorColour: ''
         }
     }
@@ -24,6 +23,7 @@ class Search extends Component {
     }
 
     handleSearch = () => {
+        // console.log(this.state.searchBody)
         this.props.onSearchAd(this.props.history, this.state.searchBody);
     }
 
@@ -48,8 +48,11 @@ class Search extends Component {
                             >
                                 <option aria-label="None" value="" />
                                 <option value={'lahore'}>Lahore</option>
-                                <option value={'islamabad'}>Islamabad</option>
+                                <option value={'Islamabad'}>Islamabad</option>
                                 <option value={"karachi"}>Karachi</option>
+                                <option value={"Sialkot"}>Sialkot</option>
+                                <option value={"Gujranwala"}>Gujranwala</option>
+                                <option value={"Faislabad"}>Faislabad</option>
                             </Select>
                         </FormControl>
                     </div>
@@ -69,7 +72,16 @@ class Search extends Component {
                                 style={{ width: "280%" }}
                             >
                                 <option aria-label="None" value="" />
-                                <option value={'2010'}>2010</option>
+                                <option value={'2000'}>2000</option>
+                                <option value={'2001'}>2001</option>
+                                <option value={'2002'}>2002</option>
+                                <option value={'2003'}>2003</option>
+                                <option value={'2004'}>2004</option>
+                                <option value={'2005'}>2005</option>
+                                <option value={'2006'}>2006</option>
+                                <option value={'2007'}>2007</option>
+                                <option value={'2008'}>2008</option>
+                                <option value={'2009'}>2009</option>
                                 <option value={'2011'}>2011</option>
                                 <option value={'2012'}>2012</option>
                                 <option value={'2013'}>2013</option>
@@ -106,28 +118,10 @@ class Search extends Component {
                     </div>
                 </div>
                 <div className="row justify-content-md-center" style={{ marginBottom: 40 }}>
-                    <div className="col-md-4" style={{ paddingLeft: 100 }} >
-                        <FormControl variant="outlined" >
-                            <InputLabel style={{ whiteSpace: "nowrap" }} htmlFor="outlined-age-native-simple">Vehicle Model</InputLabel>
-                            <Select
-                                native
-                                // value={ }
-                                onChange={(e) => this.handleChange('vehicleModel', e)}
-                                label="Vehicle Model"
-                                inputProps={{
-                                    name: 'vehicleModel',
-                                    id: 'outlined-age-native-simple',
-                                }}
-                                style={{ width: "280%" }}
-                            >
-                                <option aria-label="None" value="" />
-                                <option value={'honda city'}>Honda City</option>
-                                <option value={'corrola'}>Corrola</option>
-                                <option value={'toyota prius'}>Toyota Prius</option>
-                            </Select>
-                        </FormControl>
+
+                    <div className="col-md-2" >
                     </div>
-                    <div className="col-md-4" >
+                    <div className="col-md-4" style={{ marginLeft: "5vw" }} >
                         <FormControl variant="outlined" >
                             <InputLabel style={{ whiteSpace: "nowrap" }} htmlFor="outlined-age-native-simple">Exterior Colour</InputLabel>
                             <Select
@@ -139,20 +133,29 @@ class Search extends Component {
                                     name: 'exteriorColour',
                                     id: 'outlined-age-native-simple',
                                 }}
-                                style={{ width: "280%" }}
+                                style={{ width: "320%" }}
                             >
                                 <option aria-label="None" value="" />
                                 <option value={'red'}>Red</option>
                                 <option value={"black"}>Black</option>
                                 <option value={'white'}>White</option>
+                                <option value={'Blue'}>Blue</option>
+                                <option value={'Green'}>Green</option>
+                                <option value={'Yellow'}>Yellow</option>
+                                <option value={'Purple'}>Purple</option>
+                                <option value={'Orange'}>Orange</option>
+                                <option value={'Grey'}>Grey</option>
                             </Select>
                         </FormControl>
                     </div>
+
+                    <div className="col-md-4" style={{ marginTop: "1vw" }}>
+                        <Button onClick={this.handleSearch} style={{ paddingLeft: 20, paddingRight: 20, backgroundColor: "#178971" }} variant="contained" color="primary">Search</Button>
+                    </div>
+                    <div className="col-md-2" >
+                    </div>
                 </div>
 
-                <div className="row justify-content-md-center" style={{ marginTop: 20 }}>
-                    <Button onClick={this.handleSearch} style={{ width: "15%", backgroundColor: "#178971", marginLeft: "57%" }} variant="contained" color="primary">Search</Button>
-                </div>
             </div>
         );
     }

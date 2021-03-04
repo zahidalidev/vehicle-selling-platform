@@ -67,11 +67,9 @@ class App extends Component {
   }
 
   searchAd = async (history, body) => {
-    console.log("bod: ", body)
     try {
       const { data: searchResult } = await searchAd(body)
       this.setState({ searchResult })
-      console.log(searchResult)
 
       history.push("/searchresult");
     } catch (error) {

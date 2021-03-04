@@ -3,51 +3,26 @@ import React, { Component } from 'react';
 import { CardMedia, Input } from '@material-ui/core';
 import CreateIcon from '@material-ui/icons/Create';
 import DoneIcon from '@material-ui/icons/Done';
+import { toast } from 'react-toastify';
 
 import colors from '../../config/colors';
 import "./Admin.css"
 import profileImage from "../../assets/slider2.jpg"
 import UserListCard from '../../components/UserListCard';
+import { getAllUsers } from '../../http/api';
 
 class AdminUser extends Component {
     state = {
-        users: [
-            {
-                userID: 1,
-                fullName: "zahid Ali",
-                email: "m.zahidalidev@gmail.com",
-                contactNumber: "0336-7088018",
-                fullAddress: "satelite town gujranwala"
-            },
-            {
-                userID: 2,
-                fullName: "Ahmad Billal",
-                email: "ahmadbilaldev@gmail.com",
-                contactNumber: "0336-7088018",
-                fullAddress: "satelite town gujranwala"
-            },
-            {
-                userID: 3,
-                fullName: "Abdul Samad",
-                email: "sktabdulsamad@gmail.com",
-                contactNumber: "0336-7088018",
-                fullAddress: "satelite town gujranwala"
-            },
-            {
-                userID: 4,
-                fullName: "zahid Ali",
-                email: "m.zahidalidev@gmail.com",
-                contactNumber: "0336-7088018",
-                fullAddress: "satelite town gujranwala"
-            },
-            {
-                userID: 5,
-                fullName: "zahid Ali",
-                email: "m.zahidalidev@gmail.com",
-                contactNumber: "0336-7088018",
-                fullAddress: "satelite town gujranwala"
-            },
-        ],
+        users: [],
+    }
+
+    componentDidMount = async () => {
+        try {
+            const { data: users } = await getAllUsers()
+            this.setState({ users })
+        } catch (error) {
+            toast.error("Loading Users Error")
+        }
     }
 
     render() {

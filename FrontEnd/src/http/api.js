@@ -22,6 +22,10 @@ export const postUser = async (body) => {
     return await axios.post(`${endPoint}/users`, body)
 }
 
+export const getAllUsers = async () => {
+    return await axios.get(`${endPoint}/users/allUsers`)
+}
+
 export const login = async (body) => {
     return await axios.post(`${endPoint}/auth`, body);
 }

@@ -22,7 +22,7 @@ class Admin extends Component {
 
 
     render() {
-        const { ads, users, adminUserVisible, adminSoldAddVisible, adminCategoryVisible } = this.state;
+        const { adminUserVisible, adminSoldAddVisible, adminCategoryVisible } = this.state;
 
         return (
             <div style={{ width: "98.5%" }}>
@@ -37,7 +37,7 @@ class Admin extends Component {
                             adminUserVisible: false,
                             adminSoldAddVisible: true,
                             adminCategoryVisible: false,
-                        })} style={{ marginLeft: 20, width: "10%", height: 50, backgroundColor: colors.primary }} variant="contained" color="primary" > Sold Ads </Button>
+                        })} style={{ marginLeft: 20, width: "10%", height: 50, backgroundColor: colors.primary }} variant="contained" color="primary" > All Ads </Button>
                         <Button onClick={() => this.setState({
                             adminUserVisible: false,
                             adminSoldAddVisible: false,

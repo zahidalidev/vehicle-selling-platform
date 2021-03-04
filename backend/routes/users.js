@@ -29,6 +29,12 @@ router.get('/me', auth, async (req, res) => {
     res.send(user)
 })
 
+router.get('/allUsers', async (req, res) => {
+    const user = await User.find().select('-password')  // find user by id and exclude password
+    if (!user) return res.status(404).send('Users not found')
+    res.send(user)
+})
+
 router.get('/adOwner/:id', async (req, res) => {
     const user = await User.findById(req.params.id).select('-password')  // find user by id and exclude password
     if (!user) return res.status(404).send('The user with the given ID not found')

@@ -81,11 +81,11 @@ class Login extends Component {
                                     Login
                                 </Button>
                             </div>
-                            <div className="col-md-12" >
+                            {/* <div className="col-md-12" >
                                 <Button className="forgetButton" onClick={this.handleLogin} variant="contained" color="primary">
                                     Forget Password
                                 </Button>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

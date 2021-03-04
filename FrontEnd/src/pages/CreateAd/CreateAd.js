@@ -105,6 +105,7 @@ class CreateAd extends Component {
                     let res = resData
                     if (i === j + 1) {
                         toast.success('Ad Created and Published')
+                        window.location.reload();
                     }
                 })
             }

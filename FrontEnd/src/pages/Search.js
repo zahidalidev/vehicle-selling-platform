@@ -23,7 +23,6 @@ class Search extends Component {
     }
 
     handleSearch = () => {
-        // console.log(this.state.searchBody)
         this.props.onSearchAd(this.props.history, this.state.searchBody);
     }
 

@@ -103,7 +103,8 @@ class UpdateAd extends Component {
                     const { data: resData } = await postAdImages(currentAd._id, dataForm)
                     let res = resData
                     if (i === j + 1) {
-                        toast.success('Ad Created and Published')
+                        toast.success('Ad Updated and Published')
+                        window.location.reload();
                     }
                 })
             }

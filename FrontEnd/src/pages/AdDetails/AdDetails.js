@@ -149,7 +149,7 @@ export default function AdDetails(props) {
                         <div className="sol-md-7 ">
                             <p className="sellerInfo" style={{ color: colors.black }} >Seller Information</p>
                         </div>
-                        <div style={{ margin: 40, marginTop: 30 }} >
+                        <div style={{ margin: 40, marginTop: 30, overflow: 'auto' }} >
                             <div className="sol-md-7" >
                                 <p className="" style={{ color: colors.black }}><span style={{ fontWeight: "bold" }} >Name: </span>{adOwner.fullName}</p>
                             </div>
@@ -160,7 +160,7 @@ export default function AdDetails(props) {
                                 <p className="" style={{ color: colors.black }}><span style={{ fontWeight: "bold" }} >Email Address: </span>{adOwner.email}</p>
                             </div>
                             <div className="sol-md-7" >
-                                <p className="" style={{ color: colors.black }}><span style={{ fontWeight: "bold" }} >Full Address: </span>{adOwner.fullAddress}</p>
+                                <p style={{ color: colors.black }}><span style={{ fontWeight: "bold" }} >Full Address: </span>{adOwner.fullAddress}</p>
                             </div>
                         </div>
                     </div>

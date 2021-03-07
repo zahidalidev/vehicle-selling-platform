@@ -130,7 +130,7 @@ router.post('/search/posts', async (req, res) => {
     try {
         console.log("body: ", req.body)
         let ads = await Ad.find({
-            $and: [{ city: req.body.city }, { registrationYear: req.body.registrationYear },
+            $or: [{ city: req.body.city }, { registrationYear: req.body.registrationYear },
             { engine: req.body.engine }, { exteriorColour: req.body.exteriorColour }]
         }).select(['vehicleName', 'sellingPrice', 'vehicleModel', 'city', 'images']);
 

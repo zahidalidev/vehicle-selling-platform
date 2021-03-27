@@ -92,28 +92,31 @@ class CreateAd extends Component {
         let user = token ? jwtDecode(token) : {}
         ad.userID = user._id
 
-        try {
-            const { data: currentAd } = await postAd(ad, token)
+        if (ad.vehicleName === '' || ad.registrationYear === '' || ad.city === '' || ad.mileage === '' || ad.exteriorColour === '' || ad.vehicleModel === '' || ad.vehicleDescription === '' || ad.sellingPrice === '' || ad.vehicleStatus === '' || ad.engine === '' || ad.categoryTitle === '' || ad.userID === '') {
+            toast.error("Please Fill all the feilds")
+        } else {
+            try {
+                const { data: currentAd } = await postAd(ad, token)
 
-            let i = this.state.images.length;
-            if (currentAd) {
-                // preparing images
-                this.state.images.map(async (image, j) => {
-                    let dataForm = new FormData();
-                    dataForm.append('file', image);
-                    const { data: resData } = await postAdImages(currentAd._id, dataForm)
-                    let res = resData
-                    if (i === j + 1) {
-                        toast.success('Ad Created and Published')
-                        window.location.reload();
-                    }
-                })
+                let i = this.state.images.length;
+                if (currentAd) {
+                    // preparing images
+                    this.state.images.map(async (image, j) => {
+                        let dataForm = new FormData();
+                        dataForm.append('file', image);
+                        const { data: resData } = await postAdImages(currentAd._id, dataForm)
+                        let res = resData
+                        if (i === j + 1) {
+                            toast.success('Ad Created and Published')
+                            window.location.reload();
+                        }
+                    })
+                }
+
+            } catch (error) {
+                toast.error("Ad not added try again" + error.message)
             }
-
-        } catch (error) {
-            toast.error("Ad not added try again" + error.message)
         }
-
     }
 
     render() {

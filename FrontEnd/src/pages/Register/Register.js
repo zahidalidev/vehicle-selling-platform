@@ -85,26 +85,35 @@ class Register extends Component {
         else if (this.state.password === this.state.confirmPassword) {
             this.setState({ passwordMatchError: false })
 
-            const { fullName, email, contactNumber, fullAddress, password } = this.state;
+            let { fullName, email, contactNumber, fullAddress, password } = this.state;
 
-            const body = {
-                fullName,
-                email,
-                contactNumber,
-                fullAddress,
-                password
-            }
+            fullName = fullName.trim();
+            email = email.trim();
+            contactNumber = contactNumber.trim();
+            fullAddress = fullAddress.trim();
+            password = password.trim();
 
-            try {
-                await postUser(body)
-                this.props.history.push('/login')
-                toast.success("User Registered Successfully")
+            if (fullName === '', email === '' || contactNumber === '' || fullAddress === '' || password === '') {
+                toast.error("Please fill all the feilds")
+            } else {
+                const body = {
+                    fullName,
+                    email,
+                    contactNumber,
+                    fullAddress,
+                    password
+                }
 
-            } catch (error) {
-                toast.error('User Registraion Error: ' + error.response.data.message)
+                try {
+                    await postUser(body)
+                    this.props.history.push('/login')
+                    toast.success("User Registered Successfully")
+
+                } catch (error) {
+                    toast.error('User Registraion Error: ' + error.response.data.message)
+                }
             }
         }
-
     }
 
     render() {

@@ -35,19 +35,28 @@ class Login extends Component {
     }
 
     handleLogin = async () => {
-        const { email, password } = this.state;
-        const body = {
-            email,
-            password
+        let { email, password } = this.state;
+
+        email = email.trim();
+        password = password.trim();
+
+        if (email === '' || password === '') {
+            toast.error("Please fill all the feilds")
+        } else {
+            const body = {
+                email,
+                password
+            }
+
+            try {
+                const { data: jwt } = await login(body)
+                localStorage.setItem('token', jwt);
+                this.props.onHandleLogin(this.props.history)
+            } catch (error) {
+                toast.error('User Login Error: Email or password in invalid ')
+            }
         }
 
-        try {
-            const { data: jwt } = await login(body)
-            localStorage.setItem('token', jwt);
-            this.props.onHandleLogin(this.props.history)
-        } catch (error) {
-            toast.error('User Login Error: Email or password in invalid ')
-        }
     }
 
     render() {

@@ -130,7 +130,7 @@ class Footer extends Component {
                         </div>
                     </div>
                     <div style={{ backgroundColor: colors.lightBlack }} className="footer-copyright text-center py-3">© 2020 Copyright:
-                        <a style={{ color: colors.secondaryLight }} target="_blank" href="#"> Sell & Buy Vehicle</a>
+                        <a style={{ color: colors.secondaryLight }} target="_blank" href="#"> Auto Zone</a>
                     </div>
                 </footer>
             </div>
